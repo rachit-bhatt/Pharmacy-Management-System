@@ -4,11 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PMS"
+        xmlns:view="clr-namespace:PMS.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        d:Width="800"
+        d:Height="450"
+        Title="PMS">
 
-    <Grid>
-
-    </Grid>
+    <view:Dashboard />
 
 </Window>
