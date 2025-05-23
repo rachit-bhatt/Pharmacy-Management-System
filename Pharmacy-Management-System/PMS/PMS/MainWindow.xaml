@@ -5,10 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PMS"
         xmlns:view="clr-namespace:PMS.View"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         d:Width="800"
         d:Height="450"
         Title="PMS"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
         Background="{DynamicResource MenuBackgroundBrush}"
         Foreground="{DynamicResource ForegroundBrush}">
 
@@ -36,12 +39,7 @@
                     <Setter Property="Content">
                         <!-- Sun icon (light theme) -->
                         <Setter.Value>
-                            <Viewbox Width="24" Height="24">
-                                <Canvas Width="24" Height="24">
-                                    <Path Data="M12,4V2M12,22v-2M4.93,4.93l-1.42-1.42M19.07,19.07l-1.42-1.42M2,12H4M20,12h2M4.93,19.07l-1.42,1.42M19.07,4.93l-1.42,1.42M12,7a5,5 0 1,0 0,10a5,5 0 1,0 0,-10z"
-                                          Stroke="#FFA500" StrokeThickness="2" Fill="#FF0" />
-                                </Canvas>
-                            </Viewbox>
+                            <materialDesign:PackIcon Kind="WeatherSunny" Width="24" Height="24" Foreground="#FFA500" />
                         </Setter.Value>
                     </Setter>
                     <Style.Triggers>
@@ -49,12 +47,7 @@
                             <Setter Property="Content">
                                 <!-- Moon icon (dark theme) -->
                                 <Setter.Value>
-                                    <Viewbox Width="24" Height="24">
-                                        <Canvas Width="24" Height="24">
-                                            <Path Data="M12,2A10,10 0 0,0 2,12C2,17.52 6.48,22 12,22A10,10 0 0,0 22,12C22,6.48 17.52,2 12,2ZM12,20C7.59,20 4,16.41 4,12C4,8.13 7.13,5 11,5C11.55,5 12,5.45 12,6C12,6.55 11.55,7 11,7C8.24,7 6,9.24 6,12C6,14.76 8.24,17 11,17C13.76,17 16,14.76 16,12C16,11.45 16.45,11 17,11C17.55,11 18,11.45 18,12C18,16.41 14.41,20 12,20Z"
-                                                  Fill="#333" />
-                                        </Canvas>
-                                    </Viewbox>
+                                    <materialDesign:PackIcon Kind="WeatherNight" Width="24" Height="24" Foreground="#333" />
                                 </Setter.Value>
                             </Setter>
                         </Trigger>

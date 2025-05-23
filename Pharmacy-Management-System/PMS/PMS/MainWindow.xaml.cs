@@ -7,6 +7,8 @@ namespace PMS
     /// </summary>
     public partial class MainWindow : Window
     {
+        //private const string LightThemePath = "pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml";
+        //private const string DarkThemePath = "pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Dark.xaml";
         private const string LightThemePath = "View/Theme/LightTheme.xaml";
         private const string DarkThemePath = "View/Theme/DarkTheme.xaml";
 
@@ -33,25 +35,27 @@ namespace PMS
         private void ApplyTheme(string themePath)
         {
             var dictionaries = Application.Current.Resources.MergedDictionaries;
+
             // Remove existing theme dictionaries
             for (int i = dictionaries.Count - 1; i >= 0; i--)
             {
                 var md = dictionaries[i];
                 if (md.Source != null &&
-                    (md.Source.OriginalString.Contains("LightTheme.xaml") || md.Source.OriginalString.Contains("DarkTheme.xaml")))
+                    (md.Source.OriginalString.Contains("Light") || md.Source.OriginalString.Contains("Dark")))
                 {
                     dictionaries.RemoveAt(i);
                 }
             }
+
             // Add the selected theme
-            var themeDict = new ResourceDictionary() { Source = new System.Uri(themePath, System.UriKind.Relative) };
+            var themeDict = new ResourceDictionary() { Source = new System.Uri(themePath, System.UriKind.RelativeOrAbsolute) };
             dictionaries.Add(themeDict);
         }
 
         private bool IsDarkThemeApplied()
         {
             return Application.Current.Resources.MergedDictionaries
-                .Any(md => md.Source != null && md.Source.OriginalString.Contains("DarkTheme.xaml"));
+                .Any(md => md.Source != null && md.Source.OriginalString.Contains("Dark"));
         }
     }
 }
