@@ -13,6 +13,9 @@ namespace PMS
         public MainWindow()
         {
             InitializeComponent();
+
+            // Set the toggle button state based on the current theme
+            ThemeToggleButton.IsChecked = IsDarkThemeApplied();
             ThemeToggleButton.Checked += ThemeToggleButton_Checked;
             ThemeToggleButton.Unchecked += ThemeToggleButton_Unchecked;
         }
@@ -43,6 +46,12 @@ namespace PMS
             // Add the selected theme
             var themeDict = new ResourceDictionary() { Source = new System.Uri(themePath, System.UriKind.Relative) };
             dictionaries.Add(themeDict);
+        }
+
+        private bool IsDarkThemeApplied()
+        {
+            return Application.Current.Resources.MergedDictionaries
+                .Any(md => md.Source != null && md.Source.OriginalString.Contains("DarkTheme.xaml"));
         }
     }
 }
