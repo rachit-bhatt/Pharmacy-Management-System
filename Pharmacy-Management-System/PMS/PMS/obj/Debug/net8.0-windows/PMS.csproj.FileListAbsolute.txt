@@ -25,3 +25,5 @@ E:\GitHub\Pharmacy-Management-System\PMS\PMS\obj\Debug\net8.0-windows\View\Theme
 E:\GitHub\Pharmacy-Management-System\PMS\PMS\obj\Debug\net8.0-windows\View\Theme\LightTheme.baml
 E:\GitHub\Pharmacy-Management-System\PMS\PMS\obj\Debug\net8.0-windows\View\DashboardHeader.g.cs
 E:\GitHub\Pharmacy-Management-System\PMS\PMS\obj\Debug\net8.0-windows\View\DashboardHeader.baml
+E:\GitHub\Pharmacy-Management-System\PMS\PMS\obj\Debug\net8.0-windows\View\Dashboard.g.cs
+E:\GitHub\Pharmacy-Management-System\PMS\PMS\obj\Debug\net8.0-windows\View\Dashboard.baml

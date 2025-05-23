@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
 E:\GitHub\Pharmacy-Management-System\PMS\PMS\App.xaml
-41788504290
+5-355278291
 
-7-1870341464
+8-1250289598
 198-537775612
-MainWindow.xaml;View\DashboardHeader.xaml;View\Theme\DarkTheme.xaml;View\Theme\LightTheme.xaml;
+MainWindow.xaml;View\Dashboard.xaml;View\DashboardHeader.xaml;View\Theme\DarkTheme.xaml;View\Theme\LightTheme.xaml;
 
-True
+False
 
