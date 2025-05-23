@@ -19,6 +19,9 @@ E:\GitHub\Pharmacy-Management-System\PMS\PMS\obj\Debug\net8.0-windows\refint\PMS
 E:\GitHub\Pharmacy-Management-System\PMS\PMS\obj\Debug\net8.0-windows\PMS.pdb
 E:\GitHub\Pharmacy-Management-System\PMS\PMS\obj\Debug\net8.0-windows\PMS.genruntimeconfig.cache
 E:\GitHub\Pharmacy-Management-System\PMS\PMS\obj\Debug\net8.0-windows\ref\PMS.dll
-E:\GitHub\Pharmacy-Management-System\PMS\PMS\obj\Debug\net8.0-windows\View\Dashboard.g.cs
 E:\GitHub\Pharmacy-Management-System\PMS\PMS\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
-E:\GitHub\Pharmacy-Management-System\PMS\PMS\obj\Debug\net8.0-windows\View\Dashboard.baml
+E:\GitHub\Pharmacy-Management-System\PMS\PMS\obj\Debug\net8.0-windows\App.baml
+E:\GitHub\Pharmacy-Management-System\PMS\PMS\obj\Debug\net8.0-windows\View\Theme\DarkTheme.baml
+E:\GitHub\Pharmacy-Management-System\PMS\PMS\obj\Debug\net8.0-windows\View\Theme\LightTheme.baml
+E:\GitHub\Pharmacy-Management-System\PMS\PMS\obj\Debug\net8.0-windows\View\DashboardHeader.g.cs
+E:\GitHub\Pharmacy-Management-System\PMS\PMS\obj\Debug\net8.0-windows\View\DashboardHeader.baml

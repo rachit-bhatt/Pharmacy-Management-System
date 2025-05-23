@@ -1,0 +1,29 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Dark Theme Colors -->
+    <Color x:Key="WindowBackgroundColor">#FF1E1E1E</Color>
+    <Color x:Key="ForegroundColor">#FFF5F5F5</Color>
+    <Color x:Key="MenuBackgroundColor">#FF232323</Color>
+    <Color x:Key="MenuForegroundColor">#FFF5F5F5</Color>
+    <Color x:Key="AccentColor">#FF569CD6</Color>
+
+    <!-- Dark Theme Brushes -->
+    <SolidColorBrush x:Key="WindowBackgroundBrush" Color="{StaticResource WindowBackgroundColor}" />
+    <SolidColorBrush x:Key="ForegroundBrush" Color="{StaticResource ForegroundColor}" />
+    <SolidColorBrush x:Key="MenuBackgroundBrush" Color="{StaticResource MenuBackgroundColor}" />
+    <SolidColorBrush x:Key="MenuForegroundBrush" Color="{StaticResource MenuForegroundColor}" />
+    <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource AccentColor}" />
+
+    <!-- Example Style for Window -->
+    <Style TargetType="Window">
+        <Setter Property="Background" Value="{StaticResource WindowBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}" />
+    </Style>
+
+    <!-- Example Style for Menu -->
+    <Style TargetType="Menu">
+        <Setter Property="Background" Value="{StaticResource MenuBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource MenuForegroundBrush}" />
+    </Style>
+</ResourceDictionary>

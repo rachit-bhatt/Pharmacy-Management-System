@@ -10,5 +10,4 @@ namespace PMS
     public partial class App : Application
     {
     }
-
 }
