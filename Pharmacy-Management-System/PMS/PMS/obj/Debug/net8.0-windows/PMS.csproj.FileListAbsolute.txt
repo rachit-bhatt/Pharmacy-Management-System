@@ -27,3 +27,8 @@ E:\GitHub\Pharmacy-Management-System\PMS\PMS\obj\Debug\net8.0-windows\View\Dashb
 E:\GitHub\Pharmacy-Management-System\PMS\PMS\obj\Debug\net8.0-windows\View\DashboardHeader.baml
 E:\GitHub\Pharmacy-Management-System\PMS\PMS\obj\Debug\net8.0-windows\View\Dashboard.g.cs
 E:\GitHub\Pharmacy-Management-System\PMS\PMS\obj\Debug\net8.0-windows\View\Dashboard.baml
+E:\GitHub\Pharmacy-Management-System\PMS\PMS\bin\Debug\net8.0-windows\MaterialDesignColors.dll
+E:\GitHub\Pharmacy-Management-System\PMS\PMS\bin\Debug\net8.0-windows\MaterialDesignThemes.Wpf.dll
+E:\GitHub\Pharmacy-Management-System\PMS\PMS\bin\Debug\net8.0-windows\Microsoft.Xaml.Behaviors.dll
+E:\GitHub\Pharmacy-Management-System\PMS\PMS\obj\Debug\net8.0-windows\PMS.csproj.AssemblyReference.cache
+E:\GitHub\Pharmacy-Management-System\PMS\PMS\obj\Debug\net8.0-windows\PMS.csproj.Up2Date
