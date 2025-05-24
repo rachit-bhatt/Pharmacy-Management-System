@@ -1,0 +1,115 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Light Theme Colors -->
+    <Color x:Key="WindowBackgroundColor">#FFFFFFFF</Color>
+    <Color x:Key="ForegroundColor">#FF222222</Color>
+    <Color x:Key="MenuBackgroundColor">#FFF5F5F5</Color>
+    <Color x:Key="MenuForegroundColor">#FF222222</Color>
+    <Color x:Key="AccentColor">#FF0078D7</Color>
+
+    <!-- DataGrid Specific Colors -->
+    <Color x:Key="DataGridBackgroundColor">#FFFFFFFF</Color>
+    <Color x:Key="DataGridForegroundColor">#FF222222</Color>
+    <Color x:Key="DataGridRowBackgroundColor">#FFFFFFFF</Color>
+    <Color x:Key="DataGridAlternatingRowBackgroundColor">#FFF0F0F0</Color>
+    <Color x:Key="DataGridGridLineColor">#FFDDDDDD</Color>
+    <Color x:Key="DataGridBorderColor">#FFCCCCCC</Color>
+    <Color x:Key="DataGridSelectionColor">#FF2196F3</Color>
+    <Color x:Key="DataGridSelectionForegroundColor">#FFFFFFFF</Color>
+    <Color x:Key="DataGridColumnHeaderBackgroundColor">#FFE3E3E3</Color>
+    <Color x:Key="DataGridColumnHeaderForegroundColor">#FF222222</Color>
+
+    <!-- Light Theme Brushes -->
+    <SolidColorBrush x:Key="WindowBackgroundBrush" Color="{StaticResource WindowBackgroundColor}" />
+    <SolidColorBrush x:Key="ForegroundBrush" Color="{StaticResource ForegroundColor}" />
+    <SolidColorBrush x:Key="MenuBackgroundBrush" Color="{StaticResource MenuBackgroundColor}" />
+    <SolidColorBrush x:Key="MenuForegroundBrush" Color="{StaticResource MenuForegroundColor}" />
+    <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource AccentColor}" />
+
+    <!-- DataGrid Brushes -->
+    <SolidColorBrush x:Key="DataGridBackgroundBrush" Color="{StaticResource DataGridBackgroundColor}" />
+    <SolidColorBrush x:Key="DataGridForegroundBrush" Color="{StaticResource DataGridForegroundColor}" />
+    <SolidColorBrush x:Key="DataGridRowBackgroundBrush" Color="{StaticResource DataGridRowBackgroundColor}" />
+    <SolidColorBrush x:Key="DataGridAlternatingRowBackgroundBrush" Color="{StaticResource DataGridAlternatingRowBackgroundColor}" />
+    <SolidColorBrush x:Key="DataGridGridLineBrush" Color="{StaticResource DataGridGridLineColor}" />
+    <SolidColorBrush x:Key="DataGridBorderBrush" Color="{StaticResource DataGridBorderColor}" />
+    <SolidColorBrush x:Key="DataGridSelectionBrush" Color="{StaticResource DataGridSelectionColor}" />
+    <SolidColorBrush x:Key="DataGridSelectionForegroundBrush" Color="{StaticResource DataGridSelectionForegroundColor}" />
+    <SolidColorBrush x:Key="DataGridColumnHeaderBackgroundBrush" Color="{StaticResource DataGridColumnHeaderBackgroundColor}" />
+    <SolidColorBrush x:Key="DataGridColumnHeaderForegroundBrush" Color="{StaticResource DataGridColumnHeaderForegroundColor}" />
+
+    <!-- Example Style for Window -->
+    <Style TargetType="Window">
+        <Setter Property="Background" Value="{StaticResource WindowBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}" />
+    </Style>
+
+    <!-- Example Style for Menu -->
+    <Style TargetType="Menu">
+        <Setter Property="Background" Value="{StaticResource MenuBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource MenuForegroundBrush}" />
+    </Style>
+
+    <!-- Light Theme DataGrid Style -->
+    <Style TargetType="DataGrid">
+        <Setter Property="Background" Value="{StaticResource DataGridBackgroundBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource DataGridForegroundBrush}"/>
+        <Setter Property="RowBackground" Value="{StaticResource DataGridRowBackgroundBrush}"/>
+        <Setter Property="AlternatingRowBackground" Value="{StaticResource DataGridAlternatingRowBackgroundBrush}"/>
+        <Setter Property="GridLinesVisibility" Value="All"/>
+        <Setter Property="HorizontalGridLinesBrush" Value="{StaticResource DataGridGridLineBrush}"/>
+        <Setter Property="VerticalGridLinesBrush" Value="{StaticResource DataGridGridLineBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource DataGridBorderBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="SelectionMode" Value="Extended"/>
+        <Setter Property="SelectionUnit" Value="FullRow"/>
+        <Setter Property="SelectedItem" Value="{Binding SelectedItem, Mode=TwoWay}"/>
+        <Setter Property="SelectedIndex" Value="{Binding SelectedIndex, Mode=TwoWay}"/>
+        <Setter Property="SelectedValue" Value="{Binding SelectedValue, Mode=TwoWay}"/>
+        <Setter Property="SelectedValuePath" Value="Id"/>
+        <Setter Property="ColumnHeaderStyle">
+            <Setter.Value>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="{StaticResource DataGridColumnHeaderBackgroundBrush}"/>
+                    <Setter Property="Foreground" Value="{StaticResource DataGridColumnHeaderForegroundBrush}"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="BorderBrush" Value="{StaticResource DataGridBorderBrush}"/>
+                    <Setter Property="BorderThickness" Value="0,0,1,1"/>
+                </Style>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="DataGridRow">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Height" Value="32"/>
+    </Style>
+
+    <Style TargetType="DataGridCell">
+        <Setter Property="Padding" Value="8,0,8,0"/>
+    </Style>
+
+    <!-- Define the MaterialDesignToolButton style if missing -->
+    <Style x:Key="MaterialDesignToolButton" TargetType="Button">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="Padding" Value="4" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="0"
+                            CornerRadius="4">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

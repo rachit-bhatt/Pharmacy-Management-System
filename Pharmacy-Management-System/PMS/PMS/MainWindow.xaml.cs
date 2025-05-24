@@ -9,8 +9,8 @@ namespace PMS
     {
         //private const string LightThemePath = "pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml";
         //private const string DarkThemePath = "pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Dark.xaml";
-        private const string LightThemePath = "View/Theme/LightTheme.xaml";
-        private const string DarkThemePath = "View/Theme/DarkTheme.xaml";
+        private const string LightThemePath = "Themes/LightTheme.xaml";
+        private const string DarkThemePath = "Themes/DarkTheme.xaml";
 
         public MainWindow()
         {
