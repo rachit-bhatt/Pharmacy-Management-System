@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:PMS"
         xmlns:view="clr-namespace:PMS.View"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         d:Width="800"
         d:Height="450"
@@ -14,6 +15,20 @@
         WindowState="Maximized"
         Background="{DynamicResource MenuBackgroundBrush}"
         Foreground="{DynamicResource ForegroundBrush}">
+
+    <Window.Resources>
+
+        <System:Double x:Key="IconButtonWidth">30</System:Double>
+        <System:Double x:Key="IconButtonHeight">30</System:Double>
+        <System:Double x:Key="IconWidth">24</System:Double>
+        <System:Double x:Key="IconHeight">24</System:Double>
+
+        <Color x:Key="SunnyIconColor">#FFA500</Color>
+        <Color x:Key="NightIconColor">#333333</Color>
+        <SolidColorBrush x:Key="SunnyIconBrush" Color="{StaticResource SunnyIconColor}" />
+        <SolidColorBrush x:Key="NightIconBrush" Color="{StaticResource NightIconColor}" />
+
+    </Window.Resources>
 
     <Grid>
 
@@ -31,15 +46,18 @@
 
         <ToggleButton x:Name="ThemeToggleButton"
                       Grid.Column="1"
-                      Width="30"
-                      Height="30"
+                      Width="{StaticResource IconButtonWidth}"
+                      Height="{StaticResource IconButtonHeight}"
                       ToolTip="Toggle Theme">
             <ToggleButton.Style>
                 <Style TargetType="ToggleButton">
                     <Setter Property="Content">
                         <!-- Sun icon (light theme) -->
                         <Setter.Value>
-                            <materialDesign:PackIcon Kind="WeatherSunny" Width="24" Height="24" Foreground="#FFA500" />
+                            <materialDesign:PackIcon Kind="WeatherSunny"
+                                                     Width="{StaticResource IconWidth}"
+                                                     Height="{StaticResource IconHeight}"
+                                                     Foreground="{StaticResource SunnyIconBrush}" />
                         </Setter.Value>
                     </Setter>
                     <Style.Triggers>
@@ -47,7 +65,10 @@
                             <Setter Property="Content">
                                 <!-- Moon icon (dark theme) -->
                                 <Setter.Value>
-                                    <materialDesign:PackIcon Kind="WeatherNight" Width="24" Height="24" Foreground="#333" />
+                                    <materialDesign:PackIcon Kind="WeatherNight"
+                                                             Width="{StaticResource IconWidth}"
+                                                             Height="{StaticResource IconHeight}"
+                                                             Foreground="{StaticResource NightIconBrush}" />
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
