@@ -1,6 +1,8 @@
 ﻿
 FE:\GitHub\Pharmacy-Management-System\PMS\PMS\App.xaml;;
 FE:\GitHub\Pharmacy-Management-System\PMS\PMS\MainWindow.xaml;;
-FE:\GitHub\Pharmacy-Management-System\PMS\PMS\View\Dashboard.xaml;;
-FE:\GitHub\Pharmacy-Management-System\PMS\PMS\View\DashboardHeader.xaml;;
+FE:\GitHub\Pharmacy-Management-System\PMS\PMS\Views\Dashboard.xaml;;
+FE:\GitHub\Pharmacy-Management-System\PMS\PMS\Views\DashboardHeader.xaml;;
+FE:\GitHub\Pharmacy-Management-System\PMS\PMS\Views\PatientDataView.xaml;;
+FE:\GitHub\Pharmacy-Management-System\PMS\PMS\Views\PatientDataWindow.xaml;;
 
