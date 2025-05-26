@@ -38,7 +38,7 @@
 
     <TextBlock Text="Patient Details" FontWeight="Bold" FontSize="18" Grid.Row="0" />
 
-    <Grid Grid.Row="1">
+    <Grid Grid.Row="1" VerticalAlignment="Top">
 
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="Auto"/>
@@ -58,7 +58,7 @@
         <RowDefinition Height="Auto"/>
         <RowDefinition Height="Auto"/>
         <RowDefinition Height="Auto"/>
-        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="*"/>
       </Grid.RowDefinitions>
 
       <TextBlock Text="First Name:" Grid.Row="0" Grid.Column="0" Style="{StaticResource LabelStyle}" />
@@ -98,7 +98,7 @@
       <TextBox Text="{Binding Patient.Allergies, UpdateSourceTrigger=PropertyChanged}" Grid.Row="11" Grid.Column="1" Style="{StaticResource TextBoxStyle}"/>
 
       <TextBlock Text="Notes:" Grid.Row="12" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
-      <TextBox Text="{Binding Patient.Notes, UpdateSourceTrigger=PropertyChanged}" Grid.Row="12" Grid.Column="1" Style="{StaticResource TextBoxStyle}"/>
+      <TextBox Text="{Binding Patient.Notes, UpdateSourceTrigger=PropertyChanged}" Grid.Row="12" Grid.Column="1" Style="{StaticResource TextBoxStyle}" />
     </Grid>
 
   </Grid>

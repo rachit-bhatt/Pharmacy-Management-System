@@ -11,6 +11,12 @@
              d:Foreground="White"
              d:Background="#333">
 
+    <UserControl.Resources>
+        <Style TargetType="materialDesign:PackIcon">
+            <Setter Property="Foreground" Value="{DynamicResource MaterialDesignIconForeground}" />
+        </Style>
+    </UserControl.Resources>
+
     <UserControl.DataContext>
         <viewModels:DashboardViewModel />
     </UserControl.DataContext>
@@ -36,7 +42,7 @@
                                         Margin="2"
                                         Command="{Binding DataContext.ViewCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
                                         CommandParameter="{Binding}">
-                                    <materialDesign:PackIcon Kind="Eye" />
+                                    <materialDesign:PackIcon Kind="Eye" Foreground="{DynamicResource MaterialDesignIconForeground}" />
                                 </Button>
                                 <!-- Edit Button -->
                                 <Button ToolTip="Edit"
