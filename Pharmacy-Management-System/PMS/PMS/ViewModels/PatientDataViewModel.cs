@@ -11,5 +11,10 @@ namespace PMS.ViewModels
             get => _patient;
             set => SetProperty(ref _patient, value);
         }
+
+        public PatientDataViewModel()
+        {
+
+        }
     }
 }

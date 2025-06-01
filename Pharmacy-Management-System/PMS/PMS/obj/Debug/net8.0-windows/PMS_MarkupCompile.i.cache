@@ -16,5 +16,5 @@ E:\GitHub\Pharmacy-Management-System\PMS\PMS\App.xaml
 201-1503489680
 MainWindow.xaml;Themes\DarkTheme.xaml;Themes\LightTheme.xaml;Views\Dashboard.xaml;Views\DashboardHeader.xaml;Views\PatientDataView.xaml;Views\PatientDataWindow.xaml;
 
-False
+True
 

@@ -24,7 +24,11 @@
     <Grid>
         <DataGrid ItemsSource="{Binding Patients}"
                   AutoGenerateColumns="False"
-                  SelectedItem="{Binding SelectedPatient, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                  CanUserAddRows="False"
+                  CanUserDeleteRows="False"
+                  CanUserReorderColumns="True"
+                  CanUserResizeRows="True"
+                  CanUserSortColumns="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}" />
                 <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}" />
