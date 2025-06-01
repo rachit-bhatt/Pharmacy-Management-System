@@ -11,6 +11,12 @@
              d:Foreground="White"
              d:Background="#333">
 
+    <UserControl.Resources>
+        <Style TargetType="materialDesign:PackIcon">
+            <Setter Property="Foreground" Value="{DynamicResource MaterialDesignIconForeground}" />
+        </Style>
+    </UserControl.Resources>
+
     <UserControl.DataContext>
         <viewModels:DashboardViewModel />
     </UserControl.DataContext>
@@ -18,7 +24,11 @@
     <Grid>
         <DataGrid ItemsSource="{Binding Patients}"
                   AutoGenerateColumns="False"
-                  SelectedItem="{Binding SelectedPatient, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                  CanUserAddRows="False"
+                  CanUserDeleteRows="False"
+                  CanUserReorderColumns="True"
+                  CanUserResizeRows="True"
+                  CanUserSortColumns="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}" />
                 <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}" />
@@ -36,7 +46,7 @@
                                         Margin="2"
                                         Command="{Binding DataContext.ViewCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
                                         CommandParameter="{Binding}">
-                                    <materialDesign:PackIcon Kind="Eye" />
+                                    <materialDesign:PackIcon Kind="Eye" Foreground="{DynamicResource MaterialDesignIconForeground}" />
                                 </Button>
                                 <!-- Edit Button -->
                                 <Button ToolTip="Edit"
