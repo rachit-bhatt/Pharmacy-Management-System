@@ -17,16 +17,12 @@
         </Style>
     </UserControl.Resources>
 
-    <UserControl.DataContext>
-        <viewModels:DashboardViewModel />
-    </UserControl.DataContext>
-
     <Grid>
         <DataGrid ItemsSource="{Binding Patients}"
                   AutoGenerateColumns="False"
                   CanUserAddRows="False"
                   CanUserDeleteRows="False"
-                  CanUserReorderColumns="True"
+                  CanUserReorderColumns="False"
                   CanUserResizeRows="True"
                   CanUserSortColumns="True">
             <DataGrid.Columns>

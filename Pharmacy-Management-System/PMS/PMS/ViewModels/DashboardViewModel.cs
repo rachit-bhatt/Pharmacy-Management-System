@@ -1,6 +1,7 @@
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using PMS.Models;
+using PMS.Views;
 
 namespace PMS.ViewModels
 {
@@ -28,7 +29,7 @@ namespace PMS.ViewModels
                 FirstName = "Jane",
                 LastName = "Smith",
                 Email = "jane@example.com",
-                Contact = "0987654321",
+                Contact = "9876543210",
                 Gender = "Female",
                 DateOfBirth = new DateTime(day: 18, month: 8, year: 2000),
                 Address = "81 Glenstroke Drive, Scarborough, Ontario, Canada",
@@ -54,7 +55,7 @@ namespace PMS.ViewModels
         private void OnView(PatientData? patient)
         {
             if (patient == null) return;
-            var window = new Views.PatientDataWindow { DataContext = new PatientDataViewModel { Patient = patient } };
+            PatientDataWindow window = new() { DataContext = new PatientDataViewModel { Patient = patient } };
             window.ShowDialog();
         }
 
