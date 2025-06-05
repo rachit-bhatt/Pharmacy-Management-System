@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using PMS.ViewModels;
+using System.Windows.Controls;
 
 namespace PMS.Views
 {
@@ -10,6 +11,8 @@ namespace PMS.Views
         public Dashboard()
         {
             InitializeComponent();
+
+            DataContext = new DashboardViewModel();
         }
     }
 }

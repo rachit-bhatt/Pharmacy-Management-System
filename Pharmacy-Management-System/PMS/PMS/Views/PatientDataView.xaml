@@ -10,26 +10,22 @@
              d:DesignHeight="500"
              d:Foreground="White">
 
-  <UserControl.Resources>
-    <!-- Common style for labels -->
-    <Style x:Key="LabelStyle" TargetType="TextBlock">
-      <Setter Property="VerticalAlignment" Value="Center"/>
-    </Style>
-    <!-- Common style for textboxes -->
-    <Style x:Key="TextBoxStyle" TargetType="TextBox">
-      <Setter Property="VerticalAlignment" Value="Center"/>
-    </Style>
-    <!-- Common style for DatePicker -->
-    <Style x:Key="DatePickerStyle" TargetType="DatePicker">
-      <Setter Property="VerticalAlignment" Value="Center"/>
-    </Style>
-  </UserControl.Resources>
+    <UserControl.Resources>
+        <!-- Common style for labels -->
+        <Style x:Key="LabelStyle" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <!-- Common style for textboxes -->
+        <Style x:Key="TextBoxStyle" TargetType="TextBox">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <!-- Common style for DatePicker -->
+        <Style x:Key="DatePickerStyle" TargetType="DatePicker">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+    </UserControl.Resources>
 
-  <UserControl.DataContext>
-    <viewModels:PatientDataViewModel />
-  </UserControl.DataContext>
-
-  <Grid>
+    <Grid>
 
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto"/>
