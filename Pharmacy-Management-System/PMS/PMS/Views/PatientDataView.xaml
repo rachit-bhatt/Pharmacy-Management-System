@@ -5,6 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:PMS.Views"
              xmlns:viewModels="clr-namespace:PMS.ViewModels"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:converters="clr-namespace:PMS.Converters"
              mc:Ignorable="d"
              d:DesignWidth="400"
              d:DesignHeight="500"
@@ -18,85 +20,114 @@
         <!-- Common style for textboxes -->
         <Style x:Key="TextBoxStyle" TargetType="TextBox">
             <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="IsEnabled" Value="{Binding IsEditing}" />
         </Style>
         <!-- Common style for DatePicker -->
         <Style x:Key="DatePickerStyle" TargetType="DatePicker">
             <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="IsEnabled" Value="{Binding IsEditing}" />
         </Style>
+        <!-- Style for icon buttons -->
+        <Style x:Key="IconButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Padding" Value="4" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Cursor" Value="Hand" />
+        </Style>
+        <Style TargetType="materialDesign:PackIcon">
+            <Setter Property="Foreground" Value="{DynamicResource MaterialDesignIconForeground}" />
+        </Style>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <converters:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter"/>
     </UserControl.Resources>
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-    <Grid.RowDefinitions>
-      <RowDefinition Height="Auto"/>
-      <RowDefinition Height="*"/>
-    </Grid.RowDefinitions>
+        <!-- Header with icons -->
+        <DockPanel Grid.Row="0" LastChildFill="True">
+            <TextBlock Text="Patient Details"
+                       FontWeight="Bold"
+                       FontSize="18"
+                       VerticalAlignment="Center"
+                       DockPanel.Dock="Left" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Right">
+                <!-- Show Eye icon when NOT editing -->
+                <materialDesign:PackIcon Kind="Eye" Width="20" Height="20"
+                    ToolTip="View Mode"
+                    Visibility="{Binding IsEditing, Converter={StaticResource InverseBooleanToVisibilityConverter}}" />
+                <!-- Show Pencil icon when editing -->
+                <materialDesign:PackIcon Kind="Pencil" Width="20" Height="20"
+                    ToolTip="Edit Mode"
+                    Visibility="{Binding IsEditing, Converter={StaticResource BooleanToVisibilityConverter}}" />
+            </StackPanel>
+        </DockPanel>
 
-    <TextBlock Text="Patient Details" FontWeight="Bold" FontSize="18" Grid.Row="0" />
+        <Grid Grid.Row="1" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-    <Grid Grid.Row="1" VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="Auto"/>
-        <ColumnDefinition Width="*"/>
-      </Grid.ColumnDefinitions>
+            <TextBlock Text="First Name:" Grid.Row="0" Grid.Column="0" Style="{StaticResource LabelStyle}" />
+            <TextBox Text="{Binding Patient.FirstName, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="1" Style="{StaticResource TextBoxStyle}" />
 
-      <Grid.RowDefinitions>
-        <RowDefinition Height="Auto"/>
-        <RowDefinition Height="Auto"/>
-        <RowDefinition Height="Auto"/>
-        <RowDefinition Height="Auto"/>
-        <RowDefinition Height="Auto"/>
-        <RowDefinition Height="Auto"/>
-        <RowDefinition Height="Auto"/>
-        <RowDefinition Height="Auto"/>
-        <RowDefinition Height="Auto"/>
-        <RowDefinition Height="Auto"/>
-        <RowDefinition Height="Auto"/>
-        <RowDefinition Height="Auto"/>
-        <RowDefinition Height="*"/>
-      </Grid.RowDefinitions>
+            <TextBlock Text="Last Name:" Grid.Row="1" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
+            <TextBox Text="{Binding Patient.LastName, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" Style="{StaticResource TextBoxStyle}"/>
 
-      <TextBlock Text="First Name:" Grid.Row="0" Grid.Column="0" Style="{StaticResource LabelStyle}" />
-      <TextBox Text="{Binding Patient.FirstName, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="1" Style="{StaticResource TextBoxStyle}" />
+            <TextBlock Text="Email:" Grid.Row="2" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
+            <TextBox Text="{Binding Patient.Email, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1" Style="{StaticResource TextBoxStyle}"/>
 
-      <TextBlock Text="Last Name:" Grid.Row="1" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
-      <TextBox Text="{Binding Patient.LastName, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" Style="{StaticResource TextBoxStyle}"/>
+            <TextBlock Text="Contact:" Grid.Row="3" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
+            <TextBox Text="{Binding Patient.Contact, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1" Style="{StaticResource TextBoxStyle}"/>
 
-      <TextBlock Text="Email:" Grid.Row="2" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
-      <TextBox Text="{Binding Patient.Email, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1" Style="{StaticResource TextBoxStyle}"/>
+            <TextBlock Text="Date of Birth:" Grid.Row="4" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
+            <DatePicker SelectedDate="{Binding Patient.DateOfBirth, UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" Grid.Column="1" Style="{StaticResource DatePickerStyle}"/>
 
-      <TextBlock Text="Contact:" Grid.Row="3" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
-      <TextBox Text="{Binding Patient.Contact, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1" Style="{StaticResource TextBoxStyle}"/>
+            <TextBlock Text="Age:" Grid.Row="5" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
+            <TextBlock Text="{Binding Patient.Age}" Grid.Row="5" Grid.Column="1" Style="{StaticResource LabelStyle}"/>
 
-      <TextBlock Text="Date of Birth:" Grid.Row="4" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
-      <DatePicker SelectedDate="{Binding Patient.DateOfBirth, UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" Grid.Column="1" Style="{StaticResource DatePickerStyle}"/>
+            <TextBlock Text="Gender:" Grid.Row="6" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
+            <TextBox Text="{Binding Patient.Gender, UpdateSourceTrigger=PropertyChanged}" Grid.Row="6" Grid.Column="1" Style="{StaticResource TextBoxStyle}"/>
 
-      <TextBlock Text="Age:" Grid.Row="5" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
-      <TextBlock Text="{Binding Patient.Age}" Grid.Row="5" Grid.Column="1" Style="{StaticResource LabelStyle}"/>
+            <TextBlock Text="Address:" Grid.Row="7" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
+            <TextBox Text="{Binding Patient.Address, UpdateSourceTrigger=PropertyChanged}" Grid.Row="7" Grid.Column="1" Style="{StaticResource TextBoxStyle}"/>
 
-      <TextBlock Text="Gender:" Grid.Row="6" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
-      <TextBox Text="{Binding Patient.Gender, UpdateSourceTrigger=PropertyChanged}" Grid.Row="6" Grid.Column="1" Style="{StaticResource TextBoxStyle}"/>
+            <TextBlock Text="Medical History:" Grid.Row="8" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
+            <TextBox Text="{Binding Patient.MedicalHistory, UpdateSourceTrigger=PropertyChanged}" Grid.Row="8" Grid.Column="1" Style="{StaticResource TextBoxStyle}"/>
 
-      <TextBlock Text="Address:" Grid.Row="7" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
-      <TextBox Text="{Binding Patient.Address, UpdateSourceTrigger=PropertyChanged}" Grid.Row="7" Grid.Column="1" Style="{StaticResource TextBoxStyle}"/>
+            <TextBlock Text="Emergency Contact:" Grid.Row="9" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
+            <TextBox Text="{Binding Patient.EmergencyContact, UpdateSourceTrigger=PropertyChanged}" Grid.Row="9" Grid.Column="1" Style="{StaticResource TextBoxStyle}"/>
 
-      <TextBlock Text="Medical History:" Grid.Row="8" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
-      <TextBox Text="{Binding Patient.MedicalHistory, UpdateSourceTrigger=PropertyChanged}" Grid.Row="8" Grid.Column="1" Style="{StaticResource TextBoxStyle}"/>
+            <TextBlock Text="Blood Group:" Grid.Row="10" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
+            <TextBox Text="{Binding Patient.BloodGroup, UpdateSourceTrigger=PropertyChanged}" Grid.Row="10" Grid.Column="1" Style="{StaticResource TextBoxStyle}"/>
 
-      <TextBlock Text="Emergency Contact:" Grid.Row="9" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
-      <TextBox Text="{Binding Patient.EmergencyContact, UpdateSourceTrigger=PropertyChanged}" Grid.Row="9" Grid.Column="1" Style="{StaticResource TextBoxStyle}"/>
+            <TextBlock Text="Allergies:" Grid.Row="11" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
+            <TextBox Text="{Binding Patient.Allergies, UpdateSourceTrigger=PropertyChanged}" Grid.Row="11" Grid.Column="1" Style="{StaticResource TextBoxStyle}"/>
 
-      <TextBlock Text="Blood Group:" Grid.Row="10" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
-      <TextBox Text="{Binding Patient.BloodGroup, UpdateSourceTrigger=PropertyChanged}" Grid.Row="10" Grid.Column="1" Style="{StaticResource TextBoxStyle}"/>
-
-      <TextBlock Text="Allergies:" Grid.Row="11" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
-      <TextBox Text="{Binding Patient.Allergies, UpdateSourceTrigger=PropertyChanged}" Grid.Row="11" Grid.Column="1" Style="{StaticResource TextBoxStyle}"/>
-
-      <TextBlock Text="Notes:" Grid.Row="12" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
-      <TextBox Text="{Binding Patient.Notes, UpdateSourceTrigger=PropertyChanged}" Grid.Row="12" Grid.Column="1" Style="{StaticResource TextBoxStyle}" />
+            <TextBlock Text="Notes:" Grid.Row="12" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
+            <TextBox Text="{Binding Patient.Notes, UpdateSourceTrigger=PropertyChanged}" Grid.Row="12" Grid.Column="1" Style="{StaticResource TextBoxStyle}" />
+        </Grid>
     </Grid>
-
-  </Grid>
-
 </UserControl>

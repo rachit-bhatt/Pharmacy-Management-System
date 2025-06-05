@@ -55,13 +55,17 @@ namespace PMS.ViewModels
         private void OnView(PatientData? patient)
         {
             if (patient == null) return;
-            PatientDataWindow window = new() { DataContext = new PatientDataViewModel { Patient = patient } };
+            var vm = new PatientDataViewModel { Patient = patient, IsEditing = false };
+            var window = new PatientDataWindow { DataContext = vm };
             window.ShowDialog();
         }
 
         private void OnEdit(PatientData? patient)
         {
-            // Implement edit logic (e.g., open edit dialog)
+            if (patient == null) return;
+            var vm = new PatientDataViewModel { Patient = patient, IsEditing = true };
+            var window = new PatientDataWindow { DataContext = vm };
+            window.ShowDialog();
         }
 
         private void OnDelete(PatientData? patient)
