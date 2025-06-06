@@ -41,7 +41,11 @@
         public DateTime? DateOfBirth
         {
             get => _dateOfBirth;
-            set => SetProperty(ref _dateOfBirth, value);
+            set
+            {
+                if (SetProperty(ref _dateOfBirth, value))
+                    RaisePropertyChanged(nameof(Age));
+            }
         }
 
         /// <summary>
