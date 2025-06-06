@@ -9,6 +9,7 @@
              xmlns:converters="clr-namespace:PMS.Converters"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=viewModels:PatientDataViewModel}"
              d:DesignWidth="400"
              d:DesignHeight="500"
              d:Foreground="White">
