@@ -10,7 +10,6 @@ namespace PMS.Views
         public DashboardHeader()
         {
             InitializeComponent();
-            DataContext = new DashboardHeaderViewModel();
         }
     }
 }

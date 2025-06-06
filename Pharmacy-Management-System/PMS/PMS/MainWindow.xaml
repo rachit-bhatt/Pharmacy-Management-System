@@ -32,53 +32,43 @@
 
     <Grid>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="Auto" />
-        </Grid.ColumnDefinitions>
+        <view:Dashboard />
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-
-        <view:DashboardHeader />
-
-        <ToggleButton x:Name="ThemeToggleButton"
-                      Grid.Column="1"
-                      Width="{StaticResource IconButtonWidth}"
-                      Height="{StaticResource IconButtonHeight}"
-                      ToolTip="Toggle Theme">
-            <ToggleButton.Style>
-                <Style TargetType="ToggleButton">
-                    <Setter Property="Content">
-                        <!-- Sun icon (light theme) -->
-                        <Setter.Value>
-                            <materialDesign:PackIcon Kind="WeatherSunny"
+        <Canvas>
+            <ToggleButton x:Name="ThemeToggleButton"
+                          Canvas.Top="0"
+                          Canvas.Right="0"
+                          Width="{StaticResource IconButtonWidth}"
+                          Height="{StaticResource IconButtonHeight}"
+                          ToolTip="Toggle Theme">
+                <ToggleButton.Style>
+                    <Style TargetType="ToggleButton">
+                        <Setter Property="Content">
+                            <!-- Sun icon (light theme) -->
+                            <Setter.Value>
+                                <materialDesign:PackIcon Kind="WeatherSunny"
                                                      Width="{StaticResource IconWidth}"
                                                      Height="{StaticResource IconHeight}"
                                                      Foreground="{StaticResource SunnyIconBrush}" />
-                        </Setter.Value>
-                    </Setter>
-                    <Style.Triggers>
-                        <Trigger Property="IsChecked" Value="True">
-                            <Setter Property="Content">
-                                <!-- Moon icon (dark theme) -->
-                                <Setter.Value>
-                                    <materialDesign:PackIcon Kind="WeatherNight"
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="Content">
+                                    <!-- Moon icon (dark theme) -->
+                                    <Setter.Value>
+                                        <materialDesign:PackIcon Kind="WeatherNight"
                                                              Width="{StaticResource IconWidth}"
                                                              Height="{StaticResource IconHeight}"
                                                              Foreground="{StaticResource NightIconBrush}" />
-                                </Setter.Value>
-                            </Setter>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </ToggleButton.Style>
-        </ToggleButton>
-
-        <view:Dashboard Grid.Row="1"
-                        Grid.ColumnSpan="2" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ToggleButton.Style>
+            </ToggleButton>
+        </Canvas>
 
     </Grid>
 

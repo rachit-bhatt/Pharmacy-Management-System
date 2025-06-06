@@ -1,7 +1,7 @@
-using System.Collections.ObjectModel;
-using System.Windows.Input;
 using PMS.Models;
 using PMS.Views;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace PMS.ViewModels
 {
@@ -41,18 +41,44 @@ namespace PMS.ViewModels
             }
         ];
 
+        public ICommand AddCommand { get; }
+        public ICommand ExitCommand { get; }
+        public ICommand RefreshCommand { get; }
         public ICommand ViewCommand { get; }
         public ICommand EditCommand { get; }
         public ICommand DeleteCommand { get; }
 
         public DashboardViewModel()
         {
+            AddCommand = new RelayCommand<object>(_ => AddRecord());
+            ExitCommand = new RelayCommand<object>(_ => System.Windows.Application.Current.Shutdown());
+            RefreshCommand = new RelayCommand<object>(_ => Refresh());
+
             ViewCommand = new RelayCommand<PatientData>(OnView);
             EditCommand = new RelayCommand<PatientData>(OnEdit);
             DeleteCommand = new RelayCommand<PatientData>(OnDelete);
         }
 
-        private void OnView(PatientData? patient)
+        private void AddRecord()
+        {
+            PatientData newPatient = new();
+            PatientDataViewModel vm = new() { Patient = newPatient, IsEditing = true };
+            PatientDataWindow window = new() { DataContext = vm, ShowInTaskbar = false, Topmost = true };
+
+            if (window.ShowDialog() == true &&
+                window.DialogResult.HasValue &&
+                window.DialogResult.Value)
+            {
+                Patients.Add(newPatient);
+            }
+        }
+
+        private static void Refresh()
+        {
+            // About to implement the Refresh Logic.
+        }
+
+        private static void OnView(PatientData? patient)
         {
             if (patient == null) return;
             PatientDataViewModel vm = new() { Patient = patient, IsEditing = false };
@@ -60,7 +86,7 @@ namespace PMS.ViewModels
             window.ShowDialog();
         }
 
-        private void OnEdit(PatientData? patient)
+        private static void OnEdit(PatientData? patient)
         {
             if (patient == null) return;
 
