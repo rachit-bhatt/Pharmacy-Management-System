@@ -87,6 +87,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
@@ -128,6 +129,13 @@
 
             <TextBlock Text="Notes:" Grid.Row="12" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
             <TextBox Text="{Binding Patient.Notes, UpdateSourceTrigger=PropertyChanged}" Grid.Row="12" Grid.Column="1" Style="{StaticResource TextBoxStyle}" />
+
+            <Button Grid.Row="13" Grid.ColumnSpan="2"
+                    Content="_Save"
+                    HorizontalAlignment="Right"
+                    Width="100"
+                    Visibility="{Binding IsEditing, Converter={StaticResource BooleanToVisibilityConverter}}"
+                    Command="{Binding SaveCommand}" />
         </Grid>
     </Grid>
 </UserControl>

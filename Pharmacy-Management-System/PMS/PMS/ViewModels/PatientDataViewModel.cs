@@ -1,4 +1,5 @@
 using PMS.Models;
+using System.Windows.Input;
 
 namespace PMS.ViewModels
 {
@@ -19,9 +20,24 @@ namespace PMS.ViewModels
             set => SetProperty(ref _isEditing, value);
         }
 
+        public ICommand SaveCommand { get; }
+
         public PatientDataViewModel()
         {
+            SaveCommand = new RelayCommand<object>(_ => Save(), _ => IsEditing);
+        }
 
+        private void Save()
+        {
+            System.Windows.Window? window = System.Windows.Application.Current.Windows
+                .OfType<System.Windows.Window>()
+                .FirstOrDefault(w => w.DataContext == this);
+
+            if (window != null)
+            {
+                window.DialogResult = true; // This is the key line!
+                window.Close();
+            }
         }
     }
 }

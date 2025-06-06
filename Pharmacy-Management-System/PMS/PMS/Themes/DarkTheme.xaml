@@ -49,6 +49,10 @@
         <Setter Property="Background" Value="{StaticResource MenuBackgroundBrush}" />
         <Setter Property="Foreground" Value="{StaticResource MenuForegroundBrush}" />
     </Style>
+    <Style TargetType="MenuItem">
+        <Setter Property="Background" Value="{StaticResource MenuBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource MenuForegroundBrush}" />
+    </Style>
 
     <Style TargetType="DataGrid">
         <Setter Property="Background" Value="{StaticResource DataGridBackgroundBrush}"/>

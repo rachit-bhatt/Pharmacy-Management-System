@@ -23,10 +23,11 @@
 
         <Menu>
             <MenuItem Header="_File">
-                <MenuItem Header="_Exit" />
+                <MenuItem Header="_Add" Command="{Binding AddCommand}" />
+                <MenuItem Header="_Exit" Command="{Binding ExitCommand}" />
             </MenuItem>
             <MenuItem Header="_Edit">
-                <MenuItem Header="_Refresh" />
+                <MenuItem Header="_Refresh" Command="{Binding RefreshCommand}" />
             </MenuItem>
         </Menu>
 
