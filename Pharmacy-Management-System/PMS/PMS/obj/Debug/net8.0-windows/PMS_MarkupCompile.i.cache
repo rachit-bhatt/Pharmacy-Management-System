@@ -12,9 +12,9 @@ TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR
 E:\GitHub\Pharmacy-Management-System\PMS\PMS\App.xaml
 7248117507
 
-17-1437158532
+18-1964507187
 201-1503489680
 MainWindow.xaml;Themes\DarkTheme.xaml;Themes\LightTheme.xaml;Views\Dashboard.xaml;Views\DashboardHeader.xaml;Views\PatientDataView.xaml;Views\PatientDataWindow.xaml;
 
-False
+True
 

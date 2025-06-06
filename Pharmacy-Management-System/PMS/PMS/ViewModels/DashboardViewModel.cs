@@ -55,17 +55,53 @@ namespace PMS.ViewModels
         private void OnView(PatientData? patient)
         {
             if (patient == null) return;
-            var vm = new PatientDataViewModel { Patient = patient, IsEditing = false };
-            var window = new PatientDataWindow { DataContext = vm };
+            PatientDataViewModel vm = new() { Patient = patient, IsEditing = false };
+            PatientDataWindow window = new() { DataContext = vm };
             window.ShowDialog();
         }
 
         private void OnEdit(PatientData? patient)
         {
             if (patient == null) return;
-            var vm = new PatientDataViewModel { Patient = patient, IsEditing = true };
-            var window = new PatientDataWindow { DataContext = vm };
-            window.ShowDialog();
+
+            PatientData editCopy = new()
+            {
+                Id = patient.Id,
+                FirstName = patient.FirstName,
+                LastName = patient.LastName,
+                Email = patient.Email,
+                Contact = patient.Contact,
+                DateOfBirth = patient.DateOfBirth,
+                Gender = patient.Gender,
+                Address = patient.Address,
+                MedicalHistory = patient.MedicalHistory,
+                EmergencyContact = patient.EmergencyContact,
+                BloodGroup = patient.BloodGroup,
+                Allergies = patient.Allergies,
+                Notes = patient.Notes
+            };
+
+            PatientDataViewModel vm = new() { Patient = editCopy, IsEditing = true };
+            PatientDataWindow window = new() { DataContext = vm, ShowInTaskbar = false, Topmost = true };
+
+            if (window.ShowDialog() == true &&
+                window.DialogResult.HasValue &&
+                window.DialogResult.Value)
+            {
+                // Only update the original if Save was pressed
+                patient.FirstName = editCopy.FirstName;
+                patient.LastName = editCopy.LastName;
+                patient.Email = editCopy.Email;
+                patient.Contact = editCopy.Contact;
+                patient.DateOfBirth = editCopy.DateOfBirth;
+                patient.Gender = editCopy.Gender;
+                patient.Address = editCopy.Address;
+                patient.MedicalHistory = editCopy.MedicalHistory;
+                patient.EmergencyContact = editCopy.EmergencyContact;
+                patient.BloodGroup = editCopy.BloodGroup;
+                patient.Allergies = editCopy.Allergies;
+                patient.Notes = editCopy.Notes;
+            }
         }
 
         private void OnDelete(PatientData? patient)
