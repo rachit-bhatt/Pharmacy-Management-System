@@ -95,25 +95,17 @@
             </Grid.RowDefinitions>
 
             <TextBlock Text="First Name:" Grid.Row="0" Grid.Column="0" Style="{StaticResource LabelStyle}" />
-            <TextBox x:Name="FirstNameTextBox"
-                        Style="{StaticResource TextBoxStyle}">
-                <TextBox.Text>
-                    <Binding Path="Patient.FirstName" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" ValidatesOnDataErrors="True" NotifyOnValidationError="True">
-                        <Binding.ValidationRules>
-                            <validation:RequiredFieldValidationRule />
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
-            </TextBox>
+            <TextBox Text="{Binding Patient.FirstName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
+                     Grid.Row="0" Grid.Column="1" />
 
             <TextBlock Text="Last Name:" Grid.Row="1" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
-            <TextBox Text="{Binding Patient.LastName, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" Style="{StaticResource TextBoxStyle}"/>
+            <TextBox Text="{Binding Patient.LastName, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1"/>
 
             <TextBlock Text="Email:" Grid.Row="2" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
-            <TextBox Text="{Binding Patient.Email, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1" Style="{StaticResource TextBoxStyle}"/>
+            <TextBox Text="{Binding Patient.Email, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1"/>
 
             <TextBlock Text="Contact:" Grid.Row="3" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
-            <TextBox Text="{Binding Patient.Contact, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1" Style="{StaticResource TextBoxStyle}"/>
+            <TextBox Text="{Binding Patient.Contact, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1"/>
 
             <TextBlock Text="Date of Birth:" Grid.Row="4" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
             <DatePicker SelectedDate="{Binding Patient.DateOfBirth, UpdateSourceTrigger=PropertyChanged}"
@@ -125,25 +117,25 @@
             <TextBlock Text="{Binding Patient.Age}" Grid.Row="5" Grid.Column="1" Style="{StaticResource LabelStyle}"/>
 
             <TextBlock Text="Gender:" Grid.Row="6" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
-            <TextBox Text="{Binding Patient.Gender, UpdateSourceTrigger=PropertyChanged}" Grid.Row="6" Grid.Column="1" Style="{StaticResource TextBoxStyle}"/>
+            <TextBox Text="{Binding Patient.Gender, UpdateSourceTrigger=PropertyChanged}" Grid.Row="6" Grid.Column="1"/>
 
             <TextBlock Text="Address:" Grid.Row="7" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
-            <TextBox Text="{Binding Patient.Address, UpdateSourceTrigger=PropertyChanged}" Grid.Row="7" Grid.Column="1" Style="{StaticResource TextBoxStyle}"/>
+            <TextBox Text="{Binding Patient.Address, UpdateSourceTrigger=PropertyChanged}" Grid.Row="7" Grid.Column="1"/>
 
             <TextBlock Text="Medical History:" Grid.Row="8" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
-            <TextBox Text="{Binding Patient.MedicalHistory, UpdateSourceTrigger=PropertyChanged}" Grid.Row="8" Grid.Column="1" Style="{StaticResource TextBoxStyle}"/>
+            <TextBox Text="{Binding Patient.MedicalHistory, UpdateSourceTrigger=PropertyChanged}" Grid.Row="8" Grid.Column="1"/>
 
             <TextBlock Text="Emergency Contact:" Grid.Row="9" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
-            <TextBox Text="{Binding Patient.EmergencyContact, UpdateSourceTrigger=PropertyChanged}" Grid.Row="9" Grid.Column="1" Style="{StaticResource TextBoxStyle}"/>
+            <TextBox Text="{Binding Patient.EmergencyContact, UpdateSourceTrigger=PropertyChanged}" Grid.Row="9" Grid.Column="1"/>
 
             <TextBlock Text="Blood Group:" Grid.Row="10" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
-            <TextBox Text="{Binding Patient.BloodGroup, UpdateSourceTrigger=PropertyChanged}" Grid.Row="10" Grid.Column="1" Style="{StaticResource TextBoxStyle}"/>
+            <TextBox Text="{Binding Patient.BloodGroup, UpdateSourceTrigger=PropertyChanged}" Grid.Row="10" Grid.Column="1"/>
 
             <TextBlock Text="Allergies:" Grid.Row="11" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
-            <TextBox Text="{Binding Patient.Allergies, UpdateSourceTrigger=PropertyChanged}" Grid.Row="11" Grid.Column="1" Style="{StaticResource TextBoxStyle}"/>
+            <TextBox Text="{Binding Patient.Allergies, UpdateSourceTrigger=PropertyChanged}" Grid.Row="11" Grid.Column="1"/>
 
             <TextBlock Text="Notes:" Grid.Row="12" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
-            <TextBox Text="{Binding Patient.Notes, UpdateSourceTrigger=PropertyChanged}" Grid.Row="12" Grid.Column="1" Style="{StaticResource TextBoxStyle}" />
+            <TextBox Text="{Binding Patient.Notes, UpdateSourceTrigger=PropertyChanged}" Grid.Row="12" Grid.Column="1" />
 
             <Button Grid.Row="13" Grid.ColumnSpan="2"
                     Content="_Save"
