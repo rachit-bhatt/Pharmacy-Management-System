@@ -8,6 +8,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:converters="clr-namespace:PMS.Converters"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:validation="clr-namespace:PMS.Views.Validations"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance Type=viewModels:PatientDataViewModel}"
              d:DesignWidth="400"
@@ -94,7 +95,16 @@
             </Grid.RowDefinitions>
 
             <TextBlock Text="First Name:" Grid.Row="0" Grid.Column="0" Style="{StaticResource LabelStyle}" />
-            <TextBox Text="{Binding Patient.FirstName, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="1" Style="{StaticResource TextBoxStyle}" />
+            <TextBox x:Name="FirstNameTextBox"
+                        Style="{StaticResource TextBoxStyle}">
+                <TextBox.Text>
+                    <Binding Path="Patient.FirstName" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" ValidatesOnDataErrors="True" NotifyOnValidationError="True">
+                        <Binding.ValidationRules>
+                            <validation:RequiredFieldValidationRule />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
 
             <TextBlock Text="Last Name:" Grid.Row="1" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
             <TextBox Text="{Binding Patient.LastName, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" Style="{StaticResource TextBoxStyle}"/>
