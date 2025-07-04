@@ -1,3 +1,0 @@
-# Ignore bin and obj folders in Debug configuration
-Debug/bin/*
-Debug/obj/*
