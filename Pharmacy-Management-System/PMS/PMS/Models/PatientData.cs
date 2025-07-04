@@ -1,8 +1,12 @@
-﻿namespace PMS.Models
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+
+namespace PMS.Models
 {
-    public class PatientData : ModelBase
+    public class PatientData : ModelBase, IDataErrorInfo
     {
         private int _id;
+        [Required]
         public int Id
         {
             get => _id;
@@ -10,6 +14,7 @@
         }
 
         private string _firstName = string.Empty;
+        [Required(ErrorMessage = "First Name is Required.")]
         public string FirstName
         {
             get => _firstName;
@@ -17,6 +22,7 @@
         }
 
         private string _lastName = string.Empty;
+        [Required(ErrorMessage = "Last Name is Required.")]
         public string LastName
         {
             get => _lastName;
@@ -24,6 +30,7 @@
         }
 
         private string _email = string.Empty;
+        [Required(ErrorMessage = "Email is Required.")]
         public string Email
         {
             get => _email;
@@ -31,6 +38,7 @@
         }
 
         private string _contact = string.Empty;
+        [Required(ErrorMessage = "Email is Required.")]
         public string Contact
         {
             get => _contact;
@@ -38,6 +46,7 @@
         }
 
         private DateTime? _dateOfBirth;
+        [Required(ErrorMessage = "Dat of Birth is Required.")]
         public DateTime? DateOfBirth
         {
             get => _dateOfBirth;
@@ -67,6 +76,7 @@
         }
 
         private string _gender = string.Empty;
+        [Required(ErrorMessage = "Gender is Required.")]
         public string Gender
         {
             get => _gender;
@@ -74,6 +84,7 @@
         }
 
         private string _address = string.Empty;
+        [Required(ErrorMessage = "Address is Required.")]
         public string Address
         {
             get => _address;
@@ -81,6 +92,7 @@
         }
 
         private string _medicalHistory = string.Empty;
+        [Required(ErrorMessage = "This field can't be empty.")]
         public string MedicalHistory
         {
             get => _medicalHistory;
@@ -88,6 +100,7 @@
         }
 
         private string _emergencyContact = string.Empty;
+        [Required(ErrorMessage = "This field can't be empty.")]
         public string EmergencyContact
         {
             get => _emergencyContact;
@@ -95,6 +108,7 @@
         }
 
         private string _bloodGroup = string.Empty;
+        [Required(ErrorMessage = "This field can't be empty.")]
         public string BloodGroup
         {
             get => _bloodGroup;
@@ -102,6 +116,7 @@
         }
 
         private string _allergies = string.Empty;
+        [Required(ErrorMessage = "This field can't be empty.")]
         public string Allergies
         {
             get => _allergies;
@@ -109,10 +124,38 @@
         }
 
         private string _notes = string.Empty;
+        [Required(ErrorMessage = "This field can't be empty.")]
         public string Notes
         {
             get => _notes;
             set => SetProperty(ref _notes, value);
+        }
+
+        // IDataErrorInfo implementation
+        public string Error => null;
+
+        public string this[string columnName]
+        {
+            get
+            {
+                var results = new List<ValidationResult>();
+                var context = new ValidationContext(this) { MemberName = columnName };
+                var property = GetType().GetProperty(columnName);
+                if (property == null || property.GetIndexParameters().Length > 0) return null;
+                var value = property.GetValue(this);
+                bool isValid = Validator.TryValidateProperty(value, context, results);
+                return isValid ? null : results.First().ErrorMessage;
+            }
+        }
+
+        public bool HasErrors
+        {
+            get
+            {
+                var results = new List<ValidationResult>();
+                var context = new ValidationContext(this);
+                return !Validator.TryValidateObject(this, context, results, true);
+            }
         }
     }
 }

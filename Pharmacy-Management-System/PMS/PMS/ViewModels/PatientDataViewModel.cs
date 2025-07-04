@@ -1,5 +1,6 @@
 using PMS.Models;
 using System.Windows.Input;
+using System.Linq;
 
 namespace PMS.ViewModels
 {
@@ -24,7 +25,20 @@ namespace PMS.ViewModels
 
         public PatientDataViewModel()
         {
-            SaveCommand = new RelayCommand<object>(_ => Save(), _ => IsEditing);
+            SaveCommand = new RelayCommand<object>(_ => Save(), _ => CanSave());
+        }
+
+        private bool CanSave()
+        {
+            // Validate all properties using IDataErrorInfo
+            var properties = typeof(PatientData).GetProperties()
+                .Where(p => p.CanRead && p.Name != nameof(PatientData.Error));
+            foreach (var prop in properties)
+            {
+                if (!string.IsNullOrEmpty(Patient[prop.Name]))
+                    return false;
+            }
+            return IsEditing;
         }
 
         private void Save()
@@ -35,7 +49,7 @@ namespace PMS.ViewModels
 
             if (window != null)
             {
-                window.DialogResult = true; // This is the key line!
+                window.DialogResult = true;
                 window.Close();
             }
         }

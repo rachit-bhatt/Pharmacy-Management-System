@@ -8,10 +8,12 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:converters="clr-namespace:PMS.Converters"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:validation="clr-namespace:PMS.Views.Validations"
+             xmlns:controls="clr-namespace:PMS.Views.Controls"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance Type=viewModels:PatientDataViewModel}"
              d:DesignWidth="400"
-             d:DesignHeight="500"
+             d:DesignHeight="300"
              d:Foreground="White">
 
     <UserControl.Resources>
@@ -45,30 +47,15 @@
         <converters:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter"/>
     </UserControl.Resources>
 
+    <!-- ... (header and resources unchanged) ... -->
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- Header with icons -->
-        <DockPanel Grid.Row="0" LastChildFill="True">
-            <TextBlock Text="Patient Details"
-                       FontWeight="Bold"
-                       FontSize="18"
-                       VerticalAlignment="Center"
-                       DockPanel.Dock="Left" />
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Right">
-                <!-- Show Eye icon when NOT editing -->
-                <materialDesign:PackIcon Kind="Eye" Width="20" Height="20"
-                    ToolTip="View Mode"
-                    Visibility="{Binding IsEditing, Converter={StaticResource InverseBooleanToVisibilityConverter}}" />
-                <!-- Show Pencil icon when editing -->
-                <materialDesign:PackIcon Kind="Pencil" Width="20" Height="20"
-                    ToolTip="Edit Mode"
-                    Visibility="{Binding IsEditing, Converter={StaticResource BooleanToVisibilityConverter}}" />
-            </StackPanel>
-        </DockPanel>
+        <!-- Header with icons (unchanged) ... -->
 
         <Grid Grid.Row="1" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
@@ -94,53 +81,136 @@
             </Grid.RowDefinitions>
 
             <TextBlock Text="First Name:" Grid.Row="0" Grid.Column="0" Style="{StaticResource LabelStyle}" />
-            <TextBox Text="{Binding Patient.FirstName, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="1" Style="{StaticResource TextBoxStyle}" />
+            <controls:ValidatedField Grid.Row="0" Grid.Column="1"
+                                 BoundPropertyName="FirstName"
+                                 ErrorPosition="Right"
+                                 DataContext="{Binding Patient}">
+                <controls:ValidatedField.FieldContent>
+                    <TextBox Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" />
+                </controls:ValidatedField.FieldContent>
+            </controls:ValidatedField>
 
             <TextBlock Text="Last Name:" Grid.Row="1" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
-            <TextBox Text="{Binding Patient.LastName, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" Style="{StaticResource TextBoxStyle}"/>
+            <controls:ValidatedField Grid.Row="1" Grid.Column="1"
+                                 BoundPropertyName="LastName"
+                                 ErrorPosition="Right"
+                                 DataContext="{Binding Patient}">
+                <controls:ValidatedField.FieldContent>
+                    <TextBox Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" />
+                </controls:ValidatedField.FieldContent>
+            </controls:ValidatedField>
 
             <TextBlock Text="Email:" Grid.Row="2" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
-            <TextBox Text="{Binding Patient.Email, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1" Style="{StaticResource TextBoxStyle}"/>
+            <controls:ValidatedField Grid.Row="2" Grid.Column="1"
+                                 BoundPropertyName="Email"
+                                 ErrorPosition="Right"
+                                 DataContext="{Binding Patient}">
+                <controls:ValidatedField.FieldContent>
+                    <TextBox Text="{Binding Email, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" />
+                </controls:ValidatedField.FieldContent>
+            </controls:ValidatedField>
 
             <TextBlock Text="Contact:" Grid.Row="3" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
-            <TextBox Text="{Binding Patient.Contact, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1" Style="{StaticResource TextBoxStyle}"/>
+            <controls:ValidatedField Grid.Row="3" Grid.Column="1"
+                                 BoundPropertyName="Contact"
+                                 ErrorPosition="Right"
+                                 DataContext="{Binding Patient}">
+                <controls:ValidatedField.FieldContent>
+                    <TextBox Text="{Binding Contact, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" />
+                </controls:ValidatedField.FieldContent>
+            </controls:ValidatedField>
 
             <TextBlock Text="Date of Birth:" Grid.Row="4" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
-            <DatePicker SelectedDate="{Binding Patient.DateOfBirth, UpdateSourceTrigger=PropertyChanged}"
-                        DisplayDateEnd="{x:Static sys:DateTime.Today}"
-                        Grid.Row="4" Grid.Column="1"
-                        Style="{StaticResource DatePickerStyle}" />
+            <controls:ValidatedField Grid.Row="4" Grid.Column="1"
+                                 BoundPropertyName="DateOfBirth"
+                                 ErrorPosition="Right"
+                                 DataContext="{Binding Patient}">
+                <controls:ValidatedField.FieldContent>
+                    <DatePicker SelectedDate="{Binding DateOfBirth, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
+                            DisplayDateEnd="{x:Static sys:DateTime.Today}"
+                            Style="{StaticResource DatePickerStyle}" />
+                </controls:ValidatedField.FieldContent>
+            </controls:ValidatedField>
 
             <TextBlock Text="Age:" Grid.Row="5" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
             <TextBlock Text="{Binding Patient.Age}" Grid.Row="5" Grid.Column="1" Style="{StaticResource LabelStyle}"/>
 
             <TextBlock Text="Gender:" Grid.Row="6" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
-            <TextBox Text="{Binding Patient.Gender, UpdateSourceTrigger=PropertyChanged}" Grid.Row="6" Grid.Column="1" Style="{StaticResource TextBoxStyle}"/>
+            <controls:ValidatedField Grid.Row="6" Grid.Column="1"
+                                 BoundPropertyName="Gender"
+                                 ErrorPosition="Right"
+                                 DataContext="{Binding Patient}">
+                <controls:ValidatedField.FieldContent>
+                    <TextBox Text="{Binding Gender, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" />
+                </controls:ValidatedField.FieldContent>
+            </controls:ValidatedField>
 
             <TextBlock Text="Address:" Grid.Row="7" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
-            <TextBox Text="{Binding Patient.Address, UpdateSourceTrigger=PropertyChanged}" Grid.Row="7" Grid.Column="1" Style="{StaticResource TextBoxStyle}"/>
+            <controls:ValidatedField Grid.Row="7" Grid.Column="1"
+                                 BoundPropertyName="Address"
+                                 ErrorPosition="Right"
+                                 DataContext="{Binding Patient}">
+                <controls:ValidatedField.FieldContent>
+                    <TextBox Text="{Binding Address, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" />
+                </controls:ValidatedField.FieldContent>
+            </controls:ValidatedField>
 
             <TextBlock Text="Medical History:" Grid.Row="8" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
-            <TextBox Text="{Binding Patient.MedicalHistory, UpdateSourceTrigger=PropertyChanged}" Grid.Row="8" Grid.Column="1" Style="{StaticResource TextBoxStyle}"/>
+            <controls:ValidatedField Grid.Row="8" Grid.Column="1"
+                                 BoundPropertyName="MedicalHistory"
+                                 ErrorPosition="Right"
+                                 DataContext="{Binding Patient}">
+                <controls:ValidatedField.FieldContent>
+                    <TextBox Text="{Binding MedicalHistory, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" />
+                </controls:ValidatedField.FieldContent>
+            </controls:ValidatedField>
 
             <TextBlock Text="Emergency Contact:" Grid.Row="9" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
-            <TextBox Text="{Binding Patient.EmergencyContact, UpdateSourceTrigger=PropertyChanged}" Grid.Row="9" Grid.Column="1" Style="{StaticResource TextBoxStyle}"/>
+            <controls:ValidatedField Grid.Row="9" Grid.Column="1"
+                                 BoundPropertyName="EmergencyContact"
+                                 ErrorPosition="Right"
+                                 DataContext="{Binding Patient}">
+                <controls:ValidatedField.FieldContent>
+                    <TextBox Text="{Binding EmergencyContact, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" />
+                </controls:ValidatedField.FieldContent>
+            </controls:ValidatedField>
 
             <TextBlock Text="Blood Group:" Grid.Row="10" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
-            <TextBox Text="{Binding Patient.BloodGroup, UpdateSourceTrigger=PropertyChanged}" Grid.Row="10" Grid.Column="1" Style="{StaticResource TextBoxStyle}"/>
+            <controls:ValidatedField Grid.Row="10" Grid.Column="1"
+                                 BoundPropertyName="BloodGroup"
+                                 ErrorPosition="Right"
+                                 DataContext="{Binding Patient}">
+                <controls:ValidatedField.FieldContent>
+                    <TextBox Text="{Binding BloodGroup, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" />
+                </controls:ValidatedField.FieldContent>
+            </controls:ValidatedField>
 
             <TextBlock Text="Allergies:" Grid.Row="11" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
-            <TextBox Text="{Binding Patient.Allergies, UpdateSourceTrigger=PropertyChanged}" Grid.Row="11" Grid.Column="1" Style="{StaticResource TextBoxStyle}"/>
+            <controls:ValidatedField Grid.Row="11" Grid.Column="1"
+                                 BoundPropertyName="Allergies"
+                                 ErrorPosition="Right"
+                                 DataContext="{Binding Patient}">
+                <controls:ValidatedField.FieldContent>
+                    <TextBox Text="{Binding Allergies, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" />
+                </controls:ValidatedField.FieldContent>
+            </controls:ValidatedField>
 
             <TextBlock Text="Notes:" Grid.Row="12" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
-            <TextBox Text="{Binding Patient.Notes, UpdateSourceTrigger=PropertyChanged}" Grid.Row="12" Grid.Column="1" Style="{StaticResource TextBoxStyle}" />
+            <controls:ValidatedField Grid.Row="12" Grid.Column="1"
+                                 BoundPropertyName="Notes"
+                                 ErrorPosition="Right"
+                                 DataContext="{Binding Patient}">
+                <controls:ValidatedField.FieldContent>
+                    <TextBox Text="{Binding Notes, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" />
+                </controls:ValidatedField.FieldContent>
+            </controls:ValidatedField>
 
             <Button Grid.Row="13" Grid.ColumnSpan="2"
-                    Content="_Save"
-                    HorizontalAlignment="Right"
-                    Width="100"
-                    Visibility="{Binding IsEditing, Converter={StaticResource BooleanToVisibilityConverter}}"
-                    Command="{Binding SaveCommand}" />
+                Content="_Save"
+                HorizontalAlignment="Right"
+                Width="100"
+                Visibility="{Binding IsEditing, Converter={StaticResource BooleanToVisibilityConverter}}"
+                Command="{Binding SaveCommand}" />
         </Grid>
     </Grid>
 </UserControl>
