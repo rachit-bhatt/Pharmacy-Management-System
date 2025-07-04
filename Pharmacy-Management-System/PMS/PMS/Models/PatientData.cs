@@ -1,7 +1,5 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace PMS.Models
 {
@@ -143,10 +141,20 @@ namespace PMS.Models
                 var results = new List<ValidationResult>();
                 var context = new ValidationContext(this) { MemberName = columnName };
                 var property = GetType().GetProperty(columnName);
-                if (property == null) return null;
+                if (property == null || property.GetIndexParameters().Length > 0) return null;
                 var value = property.GetValue(this);
                 bool isValid = Validator.TryValidateProperty(value, context, results);
                 return isValid ? null : results.First().ErrorMessage;
+            }
+        }
+
+        public bool HasErrors
+        {
+            get
+            {
+                var results = new List<ValidationResult>();
+                var context = new ValidationContext(this);
+                return !Validator.TryValidateObject(this, context, results, true);
             }
         }
     }
