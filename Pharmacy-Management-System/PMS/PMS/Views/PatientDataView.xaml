@@ -97,11 +97,14 @@
 
             <TextBlock Text="First Name:" Grid.Row="0" Grid.Column="0" Style="{StaticResource LabelStyle}" />
             <controls:ValidatedField Grid.Row="0" Grid.Column="1"
-                                     Error="{Binding (Validation.Errors)[0].ErrorContent, ElementName=FirstNameBox}"
-                                     ErrorPosition="Bottom">
+                                     BoundPropertyName="FirstName"
+                                     ErrorPosition="Right"
+                                     DataContext="{Binding Patient}">
                 <controls:ValidatedField.FieldContent>
-                    <TextBox x:Name="FirstNameBox"
-                             Text="{Binding Patient.FirstName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" />
+                    <TextBox Text="{Binding FirstName, 
+                                            UpdateSourceTrigger=PropertyChanged, 
+                                            ValidatesOnDataErrors=True, 
+                                            NotifyOnValidationError=True}" />
                 </controls:ValidatedField.FieldContent>
             </controls:ValidatedField>
 
@@ -116,7 +119,7 @@
 
             <!-- Date of Birth with ValidatedField and required validation -->
             <TextBlock Text="Date of Birth:" Grid.Row="4" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
-            <controls:ValidatedField Error="{Binding Patient.DateOfBirth}" ErrorPosition="Bottom" Grid.Row="4" Grid.Column="1">
+            <controls:ValidatedField Error="{Binding Patient.DateOfBirth}" ErrorPosition="Right" Grid.Row="4" Grid.Column="1">
                 <controls:ValidatedField.FieldContent>
                     <DatePicker SelectedDate="{Binding Patient.DateOfBirth, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
                                 DisplayDateEnd="{x:Static sys:DateTime.Today}"

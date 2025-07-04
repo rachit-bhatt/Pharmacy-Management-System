@@ -1,8 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace PMS.Models
 {
-    public class PatientData : ModelBase
+    public class PatientData : ModelBase, IDataErrorInfo
     {
         private int _id;
         [Required]
@@ -128,6 +131,23 @@ namespace PMS.Models
         {
             get => _notes;
             set => SetProperty(ref _notes, value);
+        }
+
+        // IDataErrorInfo implementation
+        public string Error => null;
+
+        public string this[string columnName]
+        {
+            get
+            {
+                var results = new List<ValidationResult>();
+                var context = new ValidationContext(this) { MemberName = columnName };
+                var property = GetType().GetProperty(columnName);
+                if (property == null) return null;
+                var value = property.GetValue(this);
+                bool isValid = Validator.TryValidateProperty(value, context, results);
+                return isValid ? null : results.First().ErrorMessage;
+            }
         }
     }
 }
