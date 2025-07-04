@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
 E:\GitHub\Pharmacy-Management-System\PMS\PMS\App.xaml
-7248117507
+8839816984
 
-181840729468
-201-1503489680
-MainWindow.xaml;Themes\DarkTheme.xaml;Themes\LightTheme.xaml;Views\Dashboard.xaml;Views\DashboardHeader.xaml;Views\PatientDataView.xaml;Views\PatientDataWindow.xaml;
+201894581584
+201-618173753
+MainWindow.xaml;Themes\DarkTheme.xaml;Themes\LightTheme.xaml;Views\Controls\ValidatedField.xaml;Views\Dashboard.xaml;Views\DashboardHeader.xaml;Views\PatientDataView.xaml;Views\PatientDataWindow.xaml;
 
 True
 

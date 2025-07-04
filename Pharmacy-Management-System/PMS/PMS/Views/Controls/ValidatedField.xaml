@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="PMS.Views.Controls.ValidatedField"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:PMS.Views.Controls"
+             xmlns:convertors="clr-namespace:PMS.Views.Converters"
+             x:Name="root">
+
+    <UserControl.Resources>
+        <convertors:ValidationTextToVisibilityConvertor x:Key="ValidationTextToVisibilityConvertor"/>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Top Error -->
+        <TextBlock x:Name="ErrorTop"
+                   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                   Foreground="Red"
+                   Visibility="{Binding ErrorPosition, ElementName=root, Converter={StaticResource ValidationTextToVisibilityConvertor}, ConverterParameter={x:Static controls:ErrorPosition.Top}}"
+                   Text="{Binding Error, ElementName=root}" />
+
+        <!-- Left Error -->
+        <TextBlock x:Name="ErrorLeft"
+                   Grid.Row="1" Grid.Column="0"
+                   Foreground="Red"
+                   VerticalAlignment="Center"
+                   Visibility="{Binding ErrorPosition, ElementName=root, Converter={StaticResource ValidationTextToVisibilityConvertor}, ConverterParameter={x:Static controls:ErrorPosition.Left}}"
+                   Text="{Binding Error, ElementName=root}" />
+
+        <!-- Content (Field) -->
+        <ContentPresenter Grid.Row="1" Grid.Column="1"
+                          Content="{Binding FieldContent, ElementName=root}" />
+
+        <!-- Right Error -->
+        <TextBlock x:Name="ErrorRight"
+                   Grid.Row="1" Grid.Column="2"
+                   Foreground="Red"
+                   VerticalAlignment="Center"
+                   Visibility="{Binding ErrorPosition, ElementName=root, Converter={StaticResource ValidationTextToVisibilityConvertor}, ConverterParameter={x:Static controls:ErrorPosition.Right}}"
+                   Text="{Binding Error, ElementName=root}" />
+
+        <!-- Bottom Error -->
+        <TextBlock x:Name="ErrorBottom"
+                   Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                   Foreground="Red"
+                   Visibility="{Binding ErrorPosition, ElementName=root, Converter={StaticResource ValidationTextToVisibilityConvertor}, ConverterParameter={x:Static controls:ErrorPosition.Bottom}}"
+                   Text="{Binding Error, ElementName=root}" />
+    </Grid>
+</UserControl>

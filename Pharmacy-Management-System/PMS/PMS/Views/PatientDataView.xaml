@@ -9,10 +9,11 @@
              xmlns:converters="clr-namespace:PMS.Converters"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              xmlns:validation="clr-namespace:PMS.Views.Validations"
+             xmlns:controls="clr-namespace:PMS.Views.Controls"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance Type=viewModels:PatientDataViewModel}"
              d:DesignWidth="400"
-             d:DesignHeight="500"
+             d:DesignHeight="300"
              d:Foreground="White">
 
     <UserControl.Resources>
@@ -95,8 +96,14 @@
             </Grid.RowDefinitions>
 
             <TextBlock Text="First Name:" Grid.Row="0" Grid.Column="0" Style="{StaticResource LabelStyle}" />
-            <TextBox Text="{Binding Patient.FirstName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
-                     Grid.Row="0" Grid.Column="1" />
+            <controls:ValidatedField Grid.Row="0" Grid.Column="1"
+                                     Error="{Binding (Validation.Errors)[0].ErrorContent, ElementName=FirstNameBox}"
+                                     ErrorPosition="Bottom">
+                <controls:ValidatedField.FieldContent>
+                    <TextBox x:Name="FirstNameBox"
+                             Text="{Binding Patient.FirstName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" />
+                </controls:ValidatedField.FieldContent>
+            </controls:ValidatedField>
 
             <TextBlock Text="Last Name:" Grid.Row="1" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
             <TextBox Text="{Binding Patient.LastName, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1"/>
@@ -107,11 +114,15 @@
             <TextBlock Text="Contact:" Grid.Row="3" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
             <TextBox Text="{Binding Patient.Contact, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1"/>
 
+            <!-- Date of Birth with ValidatedField and required validation -->
             <TextBlock Text="Date of Birth:" Grid.Row="4" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
-            <DatePicker SelectedDate="{Binding Patient.DateOfBirth, UpdateSourceTrigger=PropertyChanged}"
-                        DisplayDateEnd="{x:Static sys:DateTime.Today}"
-                        Grid.Row="4" Grid.Column="1"
-                        Style="{StaticResource DatePickerStyle}" />
+            <controls:ValidatedField Error="{Binding Patient.DateOfBirth}" ErrorPosition="Bottom" Grid.Row="4" Grid.Column="1">
+                <controls:ValidatedField.FieldContent>
+                    <DatePicker SelectedDate="{Binding Patient.DateOfBirth, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
+                                DisplayDateEnd="{x:Static sys:DateTime.Today}"
+                                Style="{StaticResource DatePickerStyle}" />
+                </controls:ValidatedField.FieldContent>
+            </controls:ValidatedField>
 
             <TextBlock Text="Age:" Grid.Row="5" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
             <TextBlock Text="{Binding Patient.Age}" Grid.Row="5" Grid.Column="1" Style="{StaticResource LabelStyle}"/>

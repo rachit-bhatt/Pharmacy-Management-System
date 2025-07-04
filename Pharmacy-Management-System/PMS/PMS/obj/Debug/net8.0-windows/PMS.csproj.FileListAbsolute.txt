@@ -2,6 +2,7 @@ E:\GitHub\Pharmacy-Management-System\PMS\PMS\obj\Debug\net8.0-windows\PMS.csproj
 E:\GitHub\Pharmacy-Management-System\PMS\PMS\obj\Debug\net8.0-windows\Themes\DarkTheme.baml
 E:\GitHub\Pharmacy-Management-System\PMS\PMS\obj\Debug\net8.0-windows\Themes\LightTheme.baml
 E:\GitHub\Pharmacy-Management-System\PMS\PMS\obj\Debug\net8.0-windows\MainWindow.g.cs
+E:\GitHub\Pharmacy-Management-System\PMS\PMS\obj\Debug\net8.0-windows\Views\Controls\ValidatedField.g.cs
 E:\GitHub\Pharmacy-Management-System\PMS\PMS\obj\Debug\net8.0-windows\Views\Dashboard.g.cs
 E:\GitHub\Pharmacy-Management-System\PMS\PMS\obj\Debug\net8.0-windows\Views\DashboardHeader.g.cs
 E:\GitHub\Pharmacy-Management-System\PMS\PMS\obj\Debug\net8.0-windows\Views\PatientDataView.g.cs
@@ -20,6 +21,7 @@ E:\GitHub\Pharmacy-Management-System\PMS\PMS\bin\Debug\net8.0-windows\MaterialDe
 E:\GitHub\Pharmacy-Management-System\PMS\PMS\bin\Debug\net8.0-windows\Microsoft.Xaml.Behaviors.dll
 E:\GitHub\Pharmacy-Management-System\PMS\PMS\obj\Debug\net8.0-windows\App.baml
 E:\GitHub\Pharmacy-Management-System\PMS\PMS\obj\Debug\net8.0-windows\MainWindow.baml
+E:\GitHub\Pharmacy-Management-System\PMS\PMS\obj\Debug\net8.0-windows\Views\Controls\ValidatedField.baml
 E:\GitHub\Pharmacy-Management-System\PMS\PMS\obj\Debug\net8.0-windows\Views\Dashboard.baml
 E:\GitHub\Pharmacy-Management-System\PMS\PMS\obj\Debug\net8.0-windows\Views\DashboardHeader.baml
 E:\GitHub\Pharmacy-Management-System\PMS\PMS\obj\Debug\net8.0-windows\Views\PatientDataView.baml
