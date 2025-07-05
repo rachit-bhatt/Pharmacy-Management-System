@@ -60,7 +60,7 @@ namespace PMS.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/PMS;component/views/patientdataview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/PMS;V1.0.0.0;component/views/patientdataview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\PatientDataView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

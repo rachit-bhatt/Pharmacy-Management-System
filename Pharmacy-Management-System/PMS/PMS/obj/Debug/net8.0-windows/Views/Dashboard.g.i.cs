@@ -57,7 +57,7 @@ namespace PMS.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/PMS;component/views/dashboard.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/PMS;V1.0.0.0;component/views/dashboard.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\Dashboard.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
