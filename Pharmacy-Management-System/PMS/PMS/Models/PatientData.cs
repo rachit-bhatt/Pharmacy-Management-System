@@ -1,17 +1,15 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace PMS.Models
 {
     public class PatientData : ModelBase, IDataErrorInfo
     {
-        private int _id;
-        [Required]
-        public int Id
-        {
-            get => _id;
-            set => SetProperty(ref _id, value);
-        }
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; }
 
         private string _firstName = string.Empty;
         [Required(ErrorMessage = "First Name is Required.")]
