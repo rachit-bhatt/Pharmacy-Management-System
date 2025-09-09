@@ -36,7 +36,7 @@ namespace PMS.Models
         }
 
         private string _contact = string.Empty;
-        [Required(ErrorMessage = "Email is Required.")]
+        [Required(ErrorMessage = "Contact is Required.")]
         public string Contact
         {
             get => _contact;
@@ -44,7 +44,7 @@ namespace PMS.Models
         }
 
         private DateTime? _dateOfBirth;
-        [Required(ErrorMessage = "Dat of Birth is Required.")]
+        [Required(ErrorMessage = "Date of Birth is Required.")]
         public DateTime? DateOfBirth
         {
             get => _dateOfBirth;
