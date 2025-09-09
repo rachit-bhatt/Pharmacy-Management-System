@@ -1,17 +1,15 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace PMS.Models
 {
     public class PatientData : ModelBase, IDataErrorInfo
     {
-        private int _id;
-        [Required]
-        public int Id
-        {
-            get => _id;
-            set => SetProperty(ref _id, value);
-        }
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; }
 
         private string _firstName = string.Empty;
         [Required(ErrorMessage = "First Name is Required.")]
@@ -38,7 +36,7 @@ namespace PMS.Models
         }
 
         private string _contact = string.Empty;
-        [Required(ErrorMessage = "Email is Required.")]
+        [Required(ErrorMessage = "Contact is Required.")]
         public string Contact
         {
             get => _contact;
@@ -46,7 +44,7 @@ namespace PMS.Models
         }
 
         private DateTime? _dateOfBirth;
-        [Required(ErrorMessage = "Dat of Birth is Required.")]
+        [Required(ErrorMessage = "Date of Birth is Required.")]
         public DateTime? DateOfBirth
         {
             get => _dateOfBirth;
