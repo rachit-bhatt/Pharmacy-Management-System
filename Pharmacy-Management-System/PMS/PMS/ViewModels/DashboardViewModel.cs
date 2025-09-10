@@ -7,40 +7,9 @@ namespace PMS.ViewModels
 {
     public class DashboardViewModel : ViewModelBase
     {
-        public ObservableCollection<PatientData> Patients { get; } =
-        [
-            new PatientData
-            {
-                FirstName = "John",
-                LastName = "Doe",
-                Email = "john@example.com",
-                Contact = "1234567890",
-                Gender = "Male",
-                DateOfBirth = new DateTime(day: 29, month: 9, year: 2000),
-                Address = "3000 Victoria Park Avenue, North York, Ontario, Canada",
-                Allergies = "None",
-                BloodGroup = "B+",
-                EmergencyContact = "1234567890",
-                MedicalHistory = "N/A",
-                Notes = "N/A",
-            },
-            new PatientData
-            {
-                FirstName = "Jane",
-                LastName = "Smith",
-                Email = "jane@example.com",
-                Contact = "9876543210",
-                Gender = "Female",
-                DateOfBirth = new DateTime(day: 18, month: 8, year: 2000),
-                Address = "81 Glenstroke Drive, Scarborough, Ontario, Canada",
-                Allergies = "None",
-                BloodGroup = "A+",
-                EmergencyContact = "1234567890",
-                MedicalHistory = "N/A",
-                Notes = "N/A"
-            }
-        ];
+        public ObservableCollection<PatientData> Patients { get; } = new();
 
+        public ICommand ReloadCommand { get; }
         public ICommand AddCommand { get; }
         public ICommand ExitCommand { get; }
         public ICommand RefreshCommand { get; }
@@ -50,10 +19,10 @@ namespace PMS.ViewModels
 
         public DashboardViewModel()
         {
+            ReloadCommand = new RelayCommand<object>(_ => PatientDb.LoadAll());
             AddCommand = new RelayCommand<object>(_ => AddRecord());
             ExitCommand = new RelayCommand<object>(_ => System.Windows.Application.Current.Shutdown());
             RefreshCommand = new RelayCommand<object>(_ => Refresh());
-
             ViewCommand = new RelayCommand<PatientData>(OnView);
             EditCommand = new RelayCommand<PatientData>(OnEdit);
             DeleteCommand = new RelayCommand<PatientData>(OnDelete);
@@ -69,13 +38,14 @@ namespace PMS.ViewModels
                 window.DialogResult.HasValue &&
                 window.DialogResult.Value)
             {
+                PatientDb.Add(newPatient);
                 Patients.Add(newPatient);
             }
         }
 
         private static void Refresh()
         {
-            // About to implement the Refresh Logic.
+            // Implement refresh logic if needed
         }
 
         private static void OnView(PatientData? patient)
@@ -128,12 +98,17 @@ namespace PMS.ViewModels
                 patient.Allergies = editCopy.Allergies;
                 patient.Notes = editCopy.Notes;
             }
+
+            PatientDb.Update(patient.Id, patient);
         }
 
         private void OnDelete(PatientData? patient)
         {
             if (patient != null)
+            {
                 Patients.Remove(patient);
+                PatientDb.Delete(patient.Id);
+            }
         }
     }
 }
