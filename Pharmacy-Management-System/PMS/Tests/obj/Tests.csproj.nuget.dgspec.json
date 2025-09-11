@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\GitHub\\Pharmacy-Management-System\\PMS\\PMS\\PMS.csproj": {}
+    "E:\\GitHub\\Pharmacy-Management-System\\PMS\\Tests\\Tests.csproj": {}
   },
   "projects": {
-    "E:\\GitHub\\Pharmacy-Management-System\\PMS\\PMS\\PMS.csproj": {
+    "E:\\GitHub\\Pharmacy-Management-System\\PMS\\Tests\\Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\GitHub\\Pharmacy-Management-System\\PMS\\PMS\\PMS.csproj",
-        "projectName": "PMS",
-        "projectPath": "E:\\GitHub\\Pharmacy-Management-System\\PMS\\PMS\\PMS.csproj",
+        "projectUniqueName": "E:\\GitHub\\Pharmacy-Management-System\\PMS\\Tests\\Tests.csproj",
+        "projectName": "Tests",
+        "projectPath": "E:\\GitHub\\Pharmacy-Management-System\\PMS\\Tests\\Tests.csproj",
         "packagesPath": "C:\\Users\\Ratch\\.nuget\\packages\\",
-        "outputPath": "E:\\GitHub\\Pharmacy-Management-System\\PMS\\PMS\\obj\\",
+        "outputPath": "E:\\GitHub\\Pharmacy-Management-System\\PMS\\Tests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -22,15 +22,15 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net8.0-windows7.0"
+          "net8.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net8.0-windows7.0": {
-            "targetAlias": "net8.0-windows7.0",
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {}
           }
         },
@@ -47,28 +47,24 @@
         "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
-        "net8.0-windows7.0": {
-          "targetAlias": "net8.0-windows7.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "dependencies": {
-            "MaterialDesignThemes": {
+            "Microsoft.NET.Test.Sdk": {
               "target": "Package",
-              "version": "[5.2.1, )"
+              "version": "[17.8.0, )"
             },
-            "MongoDB.Bson": {
+            "coverlet.collector": {
               "target": "Package",
-              "version": "[3.5.0, )"
+              "version": "[6.0.0, )"
             },
-            "MongoDB.Driver": {
+            "xunit": {
               "target": "Package",
-              "version": "[3.5.0, )"
+              "version": "[2.5.3, )"
             },
-            "MongoDB.Driver.Core": {
+            "xunit.runner.visualstudio": {
               "target": "Package",
-              "version": "[2.30.0, )"
-            },
-            "Moq": {
-              "target": "Package",
-              "version": "[4.20.72, )"
+              "version": "[2.5.3, )"
             }
           },
           "imports": [
@@ -85,9 +81,6 @@
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
-            },
-            "Microsoft.WindowsDesktop.App.WPF": {
-              "privateAssets": "none"
             }
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
