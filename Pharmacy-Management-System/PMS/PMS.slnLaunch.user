@@ -1,0 +1,17 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "PMS\\PMS.csproj",
+        "Action": "Start",
+        "DebugTarget": "PMS"
+      },
+      {
+        "Path": "Tests\\Tests.csproj",
+        "Action": "StartWithoutDebugging",
+        "DebugTarget": "Tests"
+      }
+    ]
+  }
+]
