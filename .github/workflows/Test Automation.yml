@@ -116,4 +116,4 @@ jobs:
 
     # Run the Test Automation
     - name: Test Automation
-    - run: dotnet test ./tests/MyProject.Tests.csproj
+      run: dotnet test ./Tests/MyProject.Tests.csproj
