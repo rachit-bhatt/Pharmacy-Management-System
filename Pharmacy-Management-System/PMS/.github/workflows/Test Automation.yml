@@ -40,7 +40,7 @@ name: .NET Core Desktop
 
 on:
   push:
-    branches: [ "Deploy" ]
+    branches: [ "QA" ]
   pull_request:
     branches: [ "QA" ]
 
@@ -93,25 +93,37 @@ jobs:
         [IO.File]::WriteAllBytes("$certificatePath", $pfx_cert_byte)
 
     # Create the app package by building and packaging the Windows Application Packaging project
-    - name: Create the app package
-      run: msbuild $env:Wap_Project_Path /p:Configuration=$env:Configuration /p:UapAppxPackageBuildMode=$env:Appx_Package_Build_Mode /p:AppxBundle=$env:Appx_Bundle /p:PackageCertificateKeyFile=GitHubActionsWorkflow.pfx /p:PackageCertificatePassword=${{ secrets.Pfx_Key }}
-      env:
-        Appx_Bundle: Always
-        Appx_Bundle_Platforms: x86|x64
-        Appx_Package_Build_Mode: StoreUpload
-        Configuration: ${{ matrix.configuration }}
+    # - name: Create the app package
+    #   run: msbuild $env:Wap_Project_Path /p:Configuration=$env:Configuration /p:UapAppxPackageBuildMode=$env:Appx_Package_Build_Mode /p:AppxBundle=$env:Appx_Bundle /p:PackageCertificateKeyFile=GitHubActionsWorkflow.pfx /p:PackageCertificatePassword=${{ secrets.Pfx_Key }}
+    #   env:
+    #     Appx_Bundle: Always
+    #     Appx_Bundle_Platforms: x86|x64
+    #     Appx_Package_Build_Mode: StoreUpload
+    #     Configuration: ${{ matrix.configuration }}
 
     # Remove the pfx
-    - name: Remove the pfx
-      run: Remove-Item -path $env:Wap_Project_Directory\GitHubActionsWorkflow.pfx
+    # - name: Remove the pfx
+    #   run: Remove-Item -path $env:Wap_Project_Directory\GitHubActionsWorkflow.pfx
 
     # Upload the MSIX package: https://github.com/marketplace/actions/upload-a-build-artifact
-    - name: Upload build artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: MSIX Package
-        path: ${{ env.Wap_Project_Directory }}\AppPackages
+    # - name: Upload build artifacts
+    #   uses: actions/upload-artifact@v4
+    #   with:
+    #     name: MSIX Package
+    #     path: ${{ env.Wap_Project_Directory }}\AppPackages
 
     # Run the Test Automation
     - name: Test Automation
       run: dotnet test ${{ env.Solution_Name }}
+
+    # Merge to Deploy branch on successful testing
+    - name: Push QA to Deploy
+      if: success()
+      run: |
+        git config --global user.name "github-actions"
+        git config --global user.email "github-actions@github.com"
+        git checkout Deploy
+        git merge QA --no-ff --commit -m "Auto-merge QA into Deploy"
+        git push origin Deploy
+      env:
+        GH_PAT: ${{ secrets.GH_PAT }}
