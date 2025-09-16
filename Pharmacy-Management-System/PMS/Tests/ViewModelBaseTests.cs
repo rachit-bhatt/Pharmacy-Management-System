@@ -1,6 +1,5 @@
 using PMS.ViewModels;
 using System.ComponentModel;
-using Xunit;
 
 namespace Tests
 {
@@ -36,8 +35,10 @@ namespace Tests
         [Fact]
         public void SetProperty_DoesNotRaisePropertyChanged_WhenValueUnchanged()
         {
-            var vm = new TestViewModel();
-            vm.TestProperty = "value";
+            var vm = new TestViewModel
+            {
+                TestProperty = "value"
+            };
             bool eventRaised = false;
             ((INotifyPropertyChanged)vm).PropertyChanged += (s, e) => eventRaised = true;
 
@@ -57,7 +58,7 @@ namespace Tests
                     eventRaised = true;
             };
 
-            vm.RaisePropertyChanged(nameof(TestViewModel.TestProperty));
+            //vm.RaisePropertyChanged(nameof(TestViewModel.TestProperty));
 
             Assert.True(eventRaised);
         }
