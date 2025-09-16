@@ -1,3 +1,5 @@
 /PMS/bin
 /PMS/obj
 /.vs
+/Tests/bin
+/Tests/obj
