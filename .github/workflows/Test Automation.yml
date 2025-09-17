@@ -87,7 +87,17 @@ jobs:
           - name: Fetch all branches
             run: git fetch --all
 
-          # Merge to Deploy branch on successful testing
+          # Merge to QA branch on successful Testing
+          - name: Push Dev to QA
+            if: success()
+            run: |
+                git config --global user.name "github-actions"
+                git config --global user.email "github-actions@github.com"
+                git checkout QA
+                git merge origin/QA --no-ff -m "QAA - Test Automation Successful; Deploying Application - Auto-Merge Dev into QA"
+                git push origin QA
+
+          # Merge to Deploy branch on successful Testing
           - name: Push QA to Deploy
             if: success()
             run: |
