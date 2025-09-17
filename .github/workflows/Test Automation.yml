@@ -74,7 +74,7 @@ jobs:
           # GitHub Authentication
 
           - name: Setup Git Auth
-            run: git remote set-url origin https://x-access-token:${{ env.GIT_KEY }}@github.com/${{ github.repository }}
+            run: git remote set-url origin https://x-access-token:${{ secrets.PMS }}@github.com/${{ github.repository }}
 
           # Check All Repos
           - name: Checkout full repo
@@ -94,7 +94,5 @@ jobs:
                 git config --global user.name "github-actions"
                 git config --global user.email "github-actions@github.com"
                 git checkout Deploy
-                git merge QA --no-ff --commit -m "Auto-merge QA into Deploy"
+                git merge origin/QA --no-ff -m "QAA - Test Automation Successful; Deploying Application - Auto-Merge QA into Deploy"
                 git push origin Deploy
-            env:
-                GH_PAT: ${{ env.GIT_KEY }}
