@@ -1,0 +1,28 @@
+name: Auto PR from Dev to QA
+
+on:
+  push:
+    branches:
+      - Dev
+
+jobs:
+  create-pull-request:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Dev branch
+      uses: actions/checkout@v4
+      with:
+        ref: Dev
+        fetch-depth: 0
+        token: ${{ secrets.PMS }}
+
+    - name: Create Pull Request to QA
+      uses: peter-evans/create-pull-request@v5
+      with:
+        token: ${{ secrets.PMS }}
+        base: QA
+        branch: Dev
+        title: "Auto PR: Dev → QA"
+        body: "This pull request was automatically created when Dev was updated."
+        draft: false
