@@ -46,7 +46,6 @@ on:
 
 env:
   PROJECT_PATH: PMS/PMS/PMS.csproj
-  GIT_KEY: ${{ secrets.PMS }}
 
 jobs:
 
@@ -72,9 +71,9 @@ jobs:
             run: dotnet publish ${{ env.PROJECT_PATH }} -c Release --self-contained -r win-x64 -p:PublishSingleFile=true --no-restore
 
           # GitHub Authentication
-
           - name: Setup Git Auth
-            run: git remote set-url origin https://x-access-token:${{ secrets.PMS }}@github.com/${{ github.repository }}
+            run: |
+                git remote set-url origin https://x-access-token:${{ secrets.PMS }}@github.com/${{ github.repository }}
 
           # Check All Repos
           - name: Checkout full repo
@@ -82,6 +81,7 @@ jobs:
             with:
                 fetch-depth: 0
                 ref: QA
+                token: ${{ secrets.PMS }}
 
           # Fetch All Branches
           - name: Fetch all branches
