@@ -1,12 +1,11 @@
-name: Auto PR from Dev to QA
+name: Auto PR - Dev -> QA
 
 on:
   push:
-    branches:
-      - Dev
+    branches: [ "Dev" ]
 
 jobs:
-  create-pull-request:
+  create-pr:
     runs-on: ubuntu-latest
 
     steps:

@@ -1,0 +1,26 @@
+name: Auto PR - QA → Deploy
+
+on:
+  push:
+    branches: [ QA ]
+
+jobs:
+  create-pr:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout QA
+      uses: actions/checkout@v4
+      with:
+        ref: QA
+        fetch-depth: 0
+        token: ${{ secrets.PMS }}
+
+    - name: Create PR to Deploy
+      uses: peter-evans/create-pull-request@v5
+      with:
+        token: ${{ secrets.PMS }}
+        base: Deploy
+        branch: QA
+        title: "Auto PR: QA → Deploy"
+        body: "Triggered by merge into QA"
+        draft: false
