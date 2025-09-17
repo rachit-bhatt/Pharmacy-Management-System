@@ -69,7 +69,7 @@ jobs:
   
           - name: Publish Project in Single File.
             # run: dotnet publish ${{ env.PROJECT_PATH }} -c Release --self-contained -r win-x64 -p:PublishSingleFile=true --no-build
-            run: dotnet publish PMS/PMS/PMS.csproj -c Release --self-contained -r win-x64 -p:PublishSingleFile=true --no-restore
+            run: dotnet publish ${{ env.PROJECT_PATH }} -c Release --self-contained -r win-x64 -p:PublishSingleFile=true --no-restore
 
           # GitHub Authentication
 
