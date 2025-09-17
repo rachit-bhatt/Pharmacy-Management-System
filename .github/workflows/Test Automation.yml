@@ -42,7 +42,7 @@ on:
   push:
     branches: [ "QA" ]
   pull_request:
-    branches: [ "QA" ]
+    branches: [ "Deploy", "QA", "Dev" ]
 
 env:
   PROJECT_PATH: PMS/PMS/PMS.csproj
