@@ -96,5 +96,3 @@ jobs:
                 git checkout Deploy
                 git merge origin/QA --no-ff -m "QAA - Test Automation Successful; Deploying Application - Auto-Merge QA into Deploy"
                 git push origin Deploy
-            env:
-                GH_PAT: ${{ env.GIT_KEY }}
