@@ -22,11 +22,6 @@ jobs:
         git config --global user.name "github-actions"
         git config --global user.email "github-actions@github.com"
 
-    - name: Create a working branch for PR
-      run: |
-        git checkout -b Dev
-        git push origin Dev
-
     - name: Create PR to QA
       uses: peter-evans/create-pull-request@v5
       with:
