@@ -42,7 +42,7 @@ on:
   push:
     branches: [ "QA" ]
   pull_request:
-    branches: [ "QA" ]
+    branches: [ "Deploy", "QA" ]
 
 env:
   PROJECT_PATH: PMS/PMS/PMS.csproj
@@ -97,12 +97,44 @@ jobs:
                 git merge origin/QA --no-ff -m "QAA - Test Automation Successful; Deploying Application - Auto-Merge Dev into QA"
                 git push origin QA
 
-          # Merge to Deploy branch on successful Testing
-          - name: Push QA to Deploy
+          - name: Auto-approve and merge PR
             if: success()
-            run: |
-                git config --global user.name "github-actions"
-                git config --global user.email "github-actions@github.com"
-                git checkout Deploy
-                git merge origin/QA --no-ff -m "QAA - Test Automation Successful; Deploying Application - Auto-Merge QA into Deploy"
-                git push origin Deploy
+            uses: actions/github-script@v7
+            with:
+                github-token: ${{ secrets.PMS }}
+                script: |
+                  const prs = await github.rest.pulls.list({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    state: "open",
+                    base: "QA",
+                    head: "Dev"
+                  });
+
+                  if (prs.data.length > 0) {
+                    const pr = prs.data[0];
+
+                    await github.rest.pulls.createReview({
+                      owner: context.repo.owner,
+                      repo: context.repo.repo,
+                      pull_number: pr.number,
+                      event: "APPROVE"
+                    });
+
+                    await github.rest.pulls.merge({
+                      owner: context.repo.owner,
+                      repo: context.repo.repo,
+                      pull_number: pr.number,
+                      merge_method: "merge"
+                    });
+                  }
+
+          # Merge to Deploy branch on successful Testing
+          # - name: Push QA to Deploy
+          #   if: success()
+          #   run: |
+          #       git config --global user.name "github-actions"
+          #       git config --global user.email "github-actions@github.com"
+          #       git checkout Deploy
+          #       git merge origin/QA --no-ff -m "QAA - Test Automation Successful; Deploying Application - Auto-Merge QA into Deploy"
+          #       git push origin Deploy
