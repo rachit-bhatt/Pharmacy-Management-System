@@ -17,12 +17,22 @@ jobs:
         fetch-depth: 0
         token: ${{ secrets.PMS }}
 
+    - name: Configure Git
+      run: |
+        git config --global user.name "github-actions"
+        git config --global user.email "github-actions@github.com"
+
+    - name: Create a working branch for PR
+      run: |
+        git checkout -b dev-to-qa-pr
+        git push origin dev-to-qa-pr
+
     - name: Create PR to QA
       uses: peter-evans/create-pull-request@v5
       with:
         token: ${{ secrets.PMS }}
         base: QA
-        branch: Dev
+        head: dev-to-qa-pr
         title: "Auto PR: Dev → QA"
         body: "Triggered by push to Dev branch"
         draft: false
