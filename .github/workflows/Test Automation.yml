@@ -113,6 +113,7 @@ jobs:
 
                   if (prs.data.length > 0) {
                     const pr = prs.data[0];
+
                     await github.rest.pulls.createReview({
                       owner: context.repo.owner,
                       repo: context.repo.repo,

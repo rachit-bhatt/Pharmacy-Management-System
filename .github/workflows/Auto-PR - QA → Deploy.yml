@@ -2,13 +2,15 @@ name: Auto PR - QA → Deploy
 
 on:
   push:
-    branches: [ QA ]
+    branches:
+      - QA
 
 jobs:
   create-pr:
     runs-on: ubuntu-latest
+
     steps:
-    - name: Checkout QA
+    - name: Checkout QA branch
       uses: actions/checkout@v4
       with:
         ref: QA
