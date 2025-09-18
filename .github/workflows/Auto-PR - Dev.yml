@@ -32,7 +32,7 @@ jobs:
       with:
         token: ${{ secrets.PMS }}
         base: QA
-        head: dev-to-qa-pr
+        branch: dev-to-qa-pr
         title: "Auto PR: Dev → QA"
         body: "Triggered by push to Dev branch"
         draft: false
