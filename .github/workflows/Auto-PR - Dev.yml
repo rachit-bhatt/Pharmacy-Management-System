@@ -1,0 +1,38 @@
+name: Auto PR - Dev → QA
+
+on:
+  push:
+    branches:
+      - Dev
+
+jobs:
+  create-pr:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Dev branch
+      uses: actions/checkout@v4
+      with:
+        ref: Dev
+        fetch-depth: 0
+        token: ${{ secrets.PMS }}
+
+    - name: Configure Git
+      run: |
+        git config --global user.name "github-actions"
+        git config --global user.email "github-actions@github.com"
+
+    - name: Create a working branch for PR
+      run: |
+        git checkout -b Dev
+        git push origin Dev
+
+    - name: Create PR to QA
+      uses: peter-evans/create-pull-request@v5
+      with:
+        token: ${{ secrets.PMS }}
+        base: QA
+        branch: Dev
+        title: "Auto PR: Dev → QA"
+        body: "Triggered by push to Dev branch"
+        draft: false
